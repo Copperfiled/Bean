@@ -20,9 +20,12 @@
 		C25EB9111AF8B67F00B47AD5 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9101AF8B67F00B47AD5 /* MovieDetailViewController.m */; };
 		C25EB9141AF8B72100B47AD5 /* MyActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9131AF8B72100B47AD5 /* MyActivityTableViewController.m */; };
 		C25EB9171AF8B72E00B47AD5 /* MyMovieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9161AF8B72E00B47AD5 /* MyMovieTableViewController.m */; };
-		C25EB91A1AF8B8D400B47AD5 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9191AF8B8D400B47AD5 /* LoginViewController.m */; };
-		C25EB91D1AF8BEDD00B47AD5 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB91C1AF8BEDD00B47AD5 /* RegistViewController.m */; };
 		C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */; };
+		C2F8659F1AF8EFF400074283 /* LTView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865981AF8EFF400074283 /* LTView.m */; };
+		C2F865A01AF8EFF400074283 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8659A1AF8EFF400074283 /* LoginView.m */; };
+		C2F865A11AF8EFF400074283 /* RegistView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8659C1AF8EFF400074283 /* RegistView.m */; };
+		C2F865A71AF8F11B00074283 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865A41AF8F11B00074283 /* LoginViewController.m */; };
+		C2F865A81AF8F11B00074283 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865A61AF8F11B00074283 /* RegistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,12 +65,18 @@
 		C25EB9131AF8B72100B47AD5 /* MyActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivityTableViewController.m; sourceTree = "<group>"; };
 		C25EB9151AF8B72E00B47AD5 /* MyMovieTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMovieTableViewController.h; sourceTree = "<group>"; };
 		C25EB9161AF8B72E00B47AD5 /* MyMovieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMovieTableViewController.m; sourceTree = "<group>"; };
-		C25EB9181AF8B8D400B47AD5 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		C25EB9191AF8B8D400B47AD5 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		C25EB91B1AF8BEDD00B47AD5 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
-		C25EB91C1AF8BEDD00B47AD5 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		C25EB9201AF8C1C700B47AD5 /* UserSingelton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSingelton.h; sourceTree = "<group>"; };
 		C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSingelton.m; sourceTree = "<group>"; };
+		C2F865971AF8EFF400074283 /* LTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTView.h; sourceTree = "<group>"; };
+		C2F865981AF8EFF400074283 /* LTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTView.m; sourceTree = "<group>"; };
+		C2F865991AF8EFF400074283 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		C2F8659A1AF8EFF400074283 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		C2F8659B1AF8EFF400074283 /* RegistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistView.h; sourceTree = "<group>"; };
+		C2F8659C1AF8EFF400074283 /* RegistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistView.m; sourceTree = "<group>"; };
+		C2F865A31AF8F11B00074283 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C2F865A41AF8F11B00074283 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C2F865A51AF8F11B00074283 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
+		C2F865A61AF8F11B00074283 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,10 +184,16 @@
 		C25EB8F91AF8A60000B47AD5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C25EB9181AF8B8D400B47AD5 /* LoginViewController.h */,
-				C25EB9191AF8B8D400B47AD5 /* LoginViewController.m */,
-				C25EB91B1AF8BEDD00B47AD5 /* RegistViewController.h */,
-				C25EB91C1AF8BEDD00B47AD5 /* RegistViewController.m */,
+				C2F865A31AF8F11B00074283 /* LoginViewController.h */,
+				C2F865A41AF8F11B00074283 /* LoginViewController.m */,
+				C2F865A51AF8F11B00074283 /* RegistViewController.h */,
+				C2F865A61AF8F11B00074283 /* RegistViewController.m */,
+				C2F865971AF8EFF400074283 /* LTView.h */,
+				C2F865981AF8EFF400074283 /* LTView.m */,
+				C2F865991AF8EFF400074283 /* LoginView.h */,
+				C2F8659A1AF8EFF400074283 /* LoginView.m */,
+				C2F8659B1AF8EFF400074283 /* RegistView.h */,
+				C2F8659C1AF8EFF400074283 /* RegistView.m */,
 			);
 			name = Login;
 			path = Bean/Login;
@@ -319,19 +334,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F865A11AF8EFF400074283 /* RegistView.m in Sources */,
 				C25EB9171AF8B72E00B47AD5 /* MyMovieTableViewController.m in Sources */,
 				C25EB9141AF8B72100B47AD5 /* MyActivityTableViewController.m in Sources */,
-				C25EB91D1AF8BEDD00B47AD5 /* RegistViewController.m in Sources */,
+				C2F865A01AF8EFF400074283 /* LoginView.m in Sources */,
 				C25EB9111AF8B67F00B47AD5 /* MovieDetailViewController.m in Sources */,
 				C25EB90B1AF8A75300B47AD5 /* UserTableViewController.m in Sources */,
 				C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */,
+				C2F8659F1AF8EFF400074283 /* LTView.m in Sources */,
 				C25EB9021AF8A6E700B47AD5 /* ActivityListTableViewController.m in Sources */,
 				C25EB8DD1AF8A4F900B47AD5 /* AppDelegate.m in Sources */,
 				C25EB9081AF8A72F00B47AD5 /* MovieListTableViewController.m in Sources */,
 				C25EB9051AF8A70800B47AD5 /* CinemaListTableViewController.m in Sources */,
 				C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */,
-				C25EB91A1AF8B8D400B47AD5 /* LoginViewController.m in Sources */,
 				C25EB90E1AF8B2CC00B47AD5 /* ActivityDetailViewController.m in Sources */,
+				C2F865A81AF8F11B00074283 /* RegistViewController.m in Sources */,
+				C2F865A71AF8F11B00074283 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +534,7 @@
 				C25EB8F31AF8A4F900B47AD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C25EB8F41AF8A4F900B47AD5 /* Build configuration list for PBXNativeTarget "BeanTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +543,7 @@
 				C25EB8F61AF8A4F900B47AD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
