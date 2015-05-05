@@ -10,7 +10,6 @@
 #import "RegistView.h"
 #import "LTView.h"
 //#import "LoginViewController.h"
-#import "ContainerViewController.h"
 
 #define NAME_TAG 1111
 #define PASS_TAG 1112
@@ -43,7 +42,6 @@
             //find the password field
             LTView *ltV = (LTView *)[self.view viewWithTag:1001];
             [ltV.textField becomeFirstResponder];
-//            [ltV release];
             break;
         }
         case PASS_TAG:
@@ -51,7 +49,6 @@
             //find the confirm field
             LTView *ltV = (LTView *)[self.view viewWithTag:1002];
             [ltV.textField becomeFirstResponder];
-//            [ltV release];
             break;
         }
             case CONFIRM_TAG:
@@ -59,7 +56,6 @@
             //find the tele field
             LTView *ltV = (LTView *)[self.view viewWithTag:1003];
             [ltV.textField becomeFirstResponder];
-//            [ltV release];
             break;
         }
             case TELE_TAG:
@@ -67,7 +63,6 @@
             //find the email field
             LTView *ltV = (LTView *)[self.view viewWithTag:1004];
             [ltV.textField becomeFirstResponder];
-//            [ltV release];
             break;
         }
         default:
@@ -77,57 +72,59 @@
     return YES;
 }
 
--(void)loadView
+- (void)confirmRegist
 {
-//    [super loadView];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)backToLoginView
+{
+    [self confirmRegist];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     RegistView *registView = [[RegistView alloc]initWithFrame:[UIScreen mainScreen].bounds];//attention
-    
+    self.navigationItem.title = @"Regist";
     //add target/action
     registView.target = self;
     registView.action = @selector(recycleKeyboard:);
     
     //set button event
-    [registView.confirmButton addTarget:self.parentViewController action:@selector(confirmRegist) forControlEvents:UIControlEventTouchUpInside];
-    [registView.cancelButton addTarget:self.parentViewController action:@selector(backToLoginView) forControlEvents:UIControlEventTouchUpInside];
+    [registView.confirmButton addTarget:self action:@selector(confirmRegist) forControlEvents:UIControlEventTouchUpInside];
+    [registView.cancelButton addTarget:self action:@selector(backToLoginView) forControlEvents:UIControlEventTouchUpInside];
     
     //set name textfield
     LTView *nameLTView = (LTView *)[registView viewWithTag:1000];
     nameLTView.textField.tag = NAME_TAG;
     nameLTView.textField.delegate = self;
     [nameLTView.textField becomeFirstResponder];
-//    [nameLTView release];
     
     //set password textfield
     LTView *passLTView = (LTView *)[registView viewWithTag:1001];
     passLTView.textField.tag = PASS_TAG;
     passLTView.textField.delegate = self;
-//    [passLTView release];
     
     //set confirm textfield
     LTView *confirmLTView = (LTView *)[registView viewWithTag:1002];
     confirmLTView.textField.tag = CONFIRM_TAG;
     confirmLTView.textField.delegate = self;
-//    [confirmLTView release];
     
     //set tele textfield
     LTView *teleLTView = (LTView *)[registView viewWithTag:1003];
     teleLTView.textField.tag = TELE_TAG;
     teleLTView.textField.delegate = self;
-//    [teleLTView release];
     
     //set email textfield
     LTView *emailLTView = (LTView *)[registView viewWithTag:1004];
     emailLTView.textField.tag = EMAIL_TAG;
     emailLTView.textField.delegate = self;
-//    [emailLTView release];
     
     self.view = registView;
+    self.view.backgroundColor = [UIColor whiteColor];
+    UIBarButtonItem *didRegistItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirmRegist)];
+    self.navigationItem.rightBarButtonItem = didRegistItem;
     [registView release];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

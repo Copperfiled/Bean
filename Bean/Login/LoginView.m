@@ -67,26 +67,24 @@
             [self addSubview:ltV];
             [ltV release];
         }
-        //30,120
-//        NSArray *array = [self subviews];
         //set loginButton
         _loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//        [_loginButton setTitle:@"login" forState:UIControlStateNormal];
-        [_loginButton setBackgroundImage:[UIImage imageNamed:@"loginButton.jpg"] forState:UIControlStateNormal];
-        _loginButton.frame = CGRectMake(50, 170, 50, 20);
+        [_loginButton setTitle:@"login" forState:UIControlStateNormal];
+//        [_loginButton setBackgroundImage:[UIImage imageNamed:@"loginButton.jpg"] forState:UIControlStateNormal];
+        _loginButton.frame = CGRectMake(50, 200, 50, 20);
         [self addSubview:_loginButton];
         
         //set regist button
         _registButton = [UIButton buttonWithType:UIButtonTypeSystem];
-//        [_registButton setTitle:@"regist" forState:UIControlStateNormal];
-        [_registButton setBackgroundImage:[UIImage imageNamed:@"registButton.png"] forState:UIControlStateNormal];
-        _registButton.frame = CGRectMake(120, 170, 50, 20);
+        [_registButton setTitle:@"regist" forState:UIControlStateNormal];
+//        [_registButton setBackgroundImage:[UIImage imageNamed:@"registButton.png"] forState:UIControlStateNormal];
+        _registButton.frame = CGRectMake(120, 200, 50, 20);
         [self addSubview:_registButton];
         
         //set forget button
         _cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [_cancelButton setTitle:@"forget" forState:UIControlStateNormal];
-        _cancelButton.frame = CGRectMake(190, 170, 50, 20);
+        _cancelButton.frame = CGRectMake(190, 200, 50, 20);
         [self addSubview:_cancelButton];
 //        self.backgroundColor = [UIColor colorWithRed:12.32/255.0 green:-81.32/255.0 blue:-7.32/255.0 alpha:1.0];
 //        self.backgroundColor = [UIColor whiteColor];

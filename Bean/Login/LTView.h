@@ -11,7 +11,7 @@
 #define TAG_OFFSET 1000
 
 #define X_OFFSET 30
-#define Y_OFFSET 50
+#define Y_OFFSET 80
 
 @interface LTView : UIView
 

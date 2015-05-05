@@ -66,13 +66,13 @@
         //set cancel button
         _cancelButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [_cancelButton setTitle:@"cancel" forState:UIControlStateNormal];
-        _cancelButton.frame = CGRectMake(50, 300, 50, 20);
+        _cancelButton.frame = CGRectMake(50, 350, 50, 20);
         [self addSubview:_cancelButton];
         
         //set confirmButton
         _confirmButton  = [UIButton buttonWithType:UIButtonTypeSystem];
         [_confirmButton setTitle:@"confirm" forState:UIControlStateNormal];
-        _confirmButton.frame = CGRectMake(130, 300, 80, 20);
+        _confirmButton.frame = CGRectMake(130, 350, 80, 20);
         [self addSubview:_confirmButton];
 //        self.backgroundColor = [UIColor whiteColor];
     }

@@ -9,8 +9,9 @@
 #import "LoginViewController.h"
 #import "LoginView.h"
 #import "LTView.h"
-//#import "RegistViewController.h"
-#import "ContainerViewController.h"
+#import "RegistViewController.h"
+#import "UserSingelton.h"
+#import "LTView.h"
 
 #define NAMEFIELD_TAG 1111
 #define PASSWORDFIELD_TAG 1112
@@ -34,7 +35,7 @@
             [passLTView.textField resignFirstResponder];
         }
 }
-
+#pragma mark - UITextField delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField.tag == NAMEFIELD_TAG) {
@@ -48,21 +49,46 @@
     }
     return YES;
 }
-
-#pragma mark-------------------control view----------------
--(void)loadView
+- (void)login
 {
-//    [super loadView];
+    UserSingelton *singleton = [UserSingelton shareInstance];
+    LTView *ltV = (LTView *)[self.view viewWithTag:1000];//nameTF
+    LTView *ltV2 = (LTView *)[self.view viewWithTag:1001];//passTF
+    if ([ltV.textField.text isEqualToString:@"admin"] && [ltV2.textField.text isEqualToString:@"admin"])
+    {
+        //login succeed
+        singleton.isLogin = YES;
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"incorrect name or password!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    }
+}
+- (void)enterRegistView
+{
+    RegistViewController *registVC = [[RegistViewController alloc]init];
+    [self.navigationController pushViewController:registVC animated:YES];
+    [registVC release];
+}
+- (void)findPassword
+{
+    
+}
+#pragma mark-------------------control view----------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.title = @"Login";
+    // Do any additional setup after loading the view.
     LoginView *loginView = [[LoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    [loginView.loginButton addTarget:self.parentViewController action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-    [loginView.registButton addTarget:self.parentViewController action:@selector(enterRegistView) forControlEvents:UIControlEventTouchUpInside];
-    [loginView.cancelButton addTarget:self.parentViewController action:@selector(findPassword) forControlEvents:UIControlEventTouchUpInside];
+    [loginView.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    [loginView.registButton addTarget:self action:@selector(enterRegistView) forControlEvents:UIControlEventTouchUpInside];
+    [loginView.cancelButton addTarget:self action:@selector(findPassword) forControlEvents:UIControlEventTouchUpInside];
     
     //设置loginView的target/action
     loginView.target = self;
     loginView.action = @selector(recycleKeyboard:);
-    
-//    NSArray *array = [loginView subviews];
     
     LTView *ltV = (LTView *)[loginView viewWithTag:1000];//nameTF
     ltV.textField.delegate = self;
@@ -72,15 +98,12 @@
     LTView *ltV2 = (LTView *)[loginView viewWithTag:1001];
     ltV2.textField.delegate = self;
     ltV2.textField.tag = PASSWORDFIELD_TAG;
-//    [ltV release];
-//    [ltV2 release];
     
     self.view = loginView;
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     [loginView release];
-}
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
