@@ -68,6 +68,9 @@
         //login succeed
         singleton.isLogin = YES;
         [self dismissViewControllerAnimated:YES completion:nil];
+        if (_successBlock) {
+            _successBlock();//block
+        }
     } else
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"incorrect name or password!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];

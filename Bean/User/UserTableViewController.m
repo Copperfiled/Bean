@@ -33,6 +33,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *logoutItem = [[UIBarButtonItem alloc]initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout)];
+    self.navigationItem.rightBarButtonItem = logoutItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,6 +42,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)logout
+{
+    UserSingelton *user = [UserSingelton shareInstance];
+    if (user.isLogin) {
+        //already login, then log out
+        user.isLogin = NO;
+        LoginViewController *loginVC = [[LoginViewController alloc]init];
+        UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginVC];
+        [self presentViewController:navC animated:YES completion:nil];
+    }
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -71,31 +84,25 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    UserSingelton *user = [UserSingelton shareInstance];
     switch (indexPath.row) {
         case 0:
         {
-            LoginViewController *loginVC = [[LoginViewController alloc]init];
-            UINavigationController *loginNav = [[UINavigationController alloc]initWithRootViewController:loginVC];
-            
-            [self presentViewController:loginNav animated:YES completion:nil];
-            [loginNav release];
-            [loginVC release];
-//            MyActivityTableViewController *myActivity = [[MyActivityTableViewController alloc]init];
-//            [self.navigationController pushViewController:myActivity animated:YES];
+            if (!user.isLogin) {
+                [self enterLoginViewControllerSceneWithType:indexPath.row];
+            }
+            else
+            {
+                [self enterActivityViewController];
+            }
         }
             break;
         case 1:
         {
-            LoginViewController *loginVC = [[LoginViewController alloc]init];
-            UINavigationController *loginNav = [[UINavigationController alloc]initWithRootViewController:loginVC];
-            
-            [self presentViewController:loginNav animated:YES completion:nil];
-            [loginNav release];
-            [loginVC release];
-
-//            MyMovieTableViewController *myMovie = [[MyMovieTableViewController alloc]init];
-//            [self.navigationController pushViewController:myMovie animated:YES];
+            if (!user.isLogin) {
+                [self enterLoginViewControllerSceneWithType:indexPath.row];
+            }
+            else [self enterMovieDetailViewController];
         }
             break;
         default:
@@ -103,6 +110,44 @@
             break;
     }
 }
+- (void)enterLoginViewControllerSceneWithType:(NSInteger)type
+{
+    LoginViewController *loginVC = [[LoginViewController alloc]init];
+    
+    loginVC.successBlock = ^{
+        switch (type) {
+            case 0:
+                [self enterActivityViewController];
+                break;
+            case 1:
+                [self enterMovieDetailViewController];
+                break;
+            default:
+                NSLog(@"clear success!");
+                break;
+        }
+    };
+    
+    UINavigationController *loginNav = [[UINavigationController alloc]initWithRootViewController:loginVC];
+    
+    [self presentViewController:loginNav animated:YES completion:nil];
+    [loginNav release];
+    [loginVC release];
+}
+
+- (void)enterActivityViewController
+{
+    MyActivityTableViewController *myActivity = [[MyActivityTableViewController alloc]init];
+    [self.navigationController pushViewController:myActivity animated:YES];
+    
+}
+
+- (void)enterMovieDetailViewController
+{
+    MyMovieTableViewController *myMovie = [[MyMovieTableViewController alloc]init];
+    [self.navigationController pushViewController:myMovie animated:YES];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
