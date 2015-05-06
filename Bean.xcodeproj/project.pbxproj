@@ -21,6 +21,11 @@
 		C25EB9141AF8B72100B47AD5 /* MyActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9131AF8B72100B47AD5 /* MyActivityTableViewController.m */; };
 		C25EB9171AF8B72E00B47AD5 /* MyMovieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9161AF8B72E00B47AD5 /* MyMovieTableViewController.m */; };
 		C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */; };
+		C2CC2DE91AF9A829005FE9B4 /* UILabel+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */; };
+		C2CC2DED1AF9A915005FE9B4 /* UITextField+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */; };
+		C2CC2DF01AF9BC14005FE9B4 /* loginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CC2DEE1AF9BC14005FE9B4 /* loginButton.png */; };
+		C2CC2DF11AF9BC14005FE9B4 /* registButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CC2DEF1AF9BC14005FE9B4 /* registButton.png */; };
+		C2CC2DF51AF9C91A005FE9B4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DF41AF9C91A005FE9B4 /* User.m */; };
 		C2F8659F1AF8EFF400074283 /* LTView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865981AF8EFF400074283 /* LTView.m */; };
 		C2F865A01AF8EFF400074283 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8659A1AF8EFF400074283 /* LoginView.m */; };
 		C2F865A11AF8EFF400074283 /* RegistView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8659C1AF8EFF400074283 /* RegistView.m */; };
@@ -67,6 +72,14 @@
 		C25EB9161AF8B72E00B47AD5 /* MyMovieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMovieTableViewController.m; sourceTree = "<group>"; };
 		C25EB9201AF8C1C700B47AD5 /* UserSingelton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSingelton.h; sourceTree = "<group>"; };
 		C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSingelton.m; sourceTree = "<group>"; };
+		C2CC2DE71AF9A829005FE9B4 /* UILabel+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Additional.h"; sourceTree = "<group>"; };
+		C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Additional.m"; sourceTree = "<group>"; };
+		C2CC2DEB1AF9A915005FE9B4 /* UITextField+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Additional.h"; sourceTree = "<group>"; };
+		C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Additional.m"; sourceTree = "<group>"; };
+		C2CC2DEE1AF9BC14005FE9B4 /* loginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginButton.png; sourceTree = "<group>"; };
+		C2CC2DEF1AF9BC14005FE9B4 /* registButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registButton.png; sourceTree = "<group>"; };
+		C2CC2DF31AF9C91A005FE9B4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		C2CC2DF41AF9C91A005FE9B4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		C2F865971AF8EFF400074283 /* LTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTView.h; sourceTree = "<group>"; };
 		C2F865981AF8EFF400074283 /* LTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTView.m; sourceTree = "<group>"; };
 		C2F865991AF8EFF400074283 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -100,6 +113,8 @@
 		C25EB8CB1AF8A4F900B47AD5 = {
 			isa = PBXGroup;
 			children = (
+				C2CC2DF21AF9C902005FE9B4 /* Model */,
+				C2CC2DE61AF9A802005FE9B4 /* Common */,
 				C25EB91F1AF8C1A900B47AD5 /* Singelton */,
 				C25EB8F71AF8A60000B47AD5 /* Activity */,
 				C25EB8F81AF8A60000B47AD5 /* Cinema */,
@@ -194,6 +209,8 @@
 				C2F8659A1AF8EFF400074283 /* LoginView.m */,
 				C2F8659B1AF8EFF400074283 /* RegistView.h */,
 				C2F8659C1AF8EFF400074283 /* RegistView.m */,
+				C2CC2DEE1AF9BC14005FE9B4 /* loginButton.png */,
+				C2CC2DEF1AF9BC14005FE9B4 /* registButton.png */,
 			);
 			name = Login;
 			path = Bean/Login;
@@ -233,6 +250,28 @@
 			);
 			name = Singelton;
 			path = Bean/Singelton;
+			sourceTree = "<group>";
+		};
+		C2CC2DE61AF9A802005FE9B4 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C2CC2DE71AF9A829005FE9B4 /* UILabel+Additional.h */,
+				C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */,
+				C2CC2DEB1AF9A915005FE9B4 /* UITextField+Additional.h */,
+				C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */,
+			);
+			name = Common;
+			path = Bean/Common;
+			sourceTree = "<group>";
+		};
+		C2CC2DF21AF9C902005FE9B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2CC2DF31AF9C91A005FE9B4 /* User.h */,
+				C2CC2DF41AF9C91A005FE9B4 /* User.m */,
+			);
+			name = Model;
+			path = Bean/Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +355,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25EB8E21AF8A4F900B47AD5 /* LaunchScreen.xib in Resources */,
+				C2CC2DF11AF9BC14005FE9B4 /* registButton.png in Resources */,
 				C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */,
+				C2CC2DF01AF9BC14005FE9B4 /* loginButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,13 +381,16 @@
 				C2F865A01AF8EFF400074283 /* LoginView.m in Sources */,
 				C25EB9111AF8B67F00B47AD5 /* MovieDetailViewController.m in Sources */,
 				C25EB90B1AF8A75300B47AD5 /* UserTableViewController.m in Sources */,
+				C2CC2DED1AF9A915005FE9B4 /* UITextField+Additional.m in Sources */,
 				C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */,
 				C2F8659F1AF8EFF400074283 /* LTView.m in Sources */,
 				C25EB9021AF8A6E700B47AD5 /* ActivityListTableViewController.m in Sources */,
 				C25EB8DD1AF8A4F900B47AD5 /* AppDelegate.m in Sources */,
+				C2CC2DE91AF9A829005FE9B4 /* UILabel+Additional.m in Sources */,
 				C25EB9081AF8A72F00B47AD5 /* MovieListTableViewController.m in Sources */,
 				C25EB9051AF8A70800B47AD5 /* CinemaListTableViewController.m in Sources */,
 				C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */,
+				C2CC2DF51AF9C91A005FE9B4 /* User.m in Sources */,
 				C25EB90E1AF8B2CC00B47AD5 /* ActivityDetailViewController.m in Sources */,
 				C2F865A81AF8F11B00074283 /* RegistViewController.m in Sources */,
 				C2F865A71AF8F11B00074283 /* LoginViewController.m in Sources */,

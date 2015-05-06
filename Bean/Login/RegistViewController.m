@@ -74,57 +74,80 @@
 
 - (void)confirmRegist
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    LTView *nameLTV = (LTView *)[self.view viewWithTag:1000];
+    LTView *passLTV = (LTView *)[self.view viewWithTag:1001];
+    LTView *confirmLTV = (LTView *)[self.view viewWithTag:1002];
+    LTView *phoneLTV = (LTView *)[self.view viewWithTag:1003];
+    LTView *emailLTV = (LTView *)[self.view viewWithTag:1004];
+    
+    NSString *userName = nameLTV.textField.text;
+    NSString *password = passLTV.textField.text;
+    NSString *confirmP = confirmLTV.textField.text;
+    NSString *phoneNum = phoneLTV.textField.text;
+    NSString *email = emailLTV.textField.text;
+    if (0 == userName.length || 0 ==password.length || 0 == confirmP.length || 0 == phoneNum.length || 0 == email.length) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"can not be nil" delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Confirm", nil];
+        [alert show];
+        [alert release];
+    }
+    else
+    {
+        NSUserDefaults *users = [NSUserDefaults standardUserDefaults];
+        NSArray *userArray = @[userName, password, confirmP, phoneNum, email];
+        [users setObject:userArray forKey:userName];
+        [users synchronize];
+        NSLog(@"regist success");
+    }
 }
 - (void)backToLoginView
 {
-    [self confirmRegist];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    RegistView *registView = [[RegistView alloc]initWithFrame:[UIScreen mainScreen].bounds];//attention
+    _registView = [[RegistView alloc]initWithFrame:[UIScreen mainScreen].bounds];//attention
     self.navigationItem.title = @"Regist";
     //add target/action
-    registView.target = self;
-    registView.action = @selector(recycleKeyboard:);
+    _registView.target = self;
+    _registView.action = @selector(recycleKeyboard:);
     
     //set button event
-    [registView.confirmButton addTarget:self action:@selector(confirmRegist) forControlEvents:UIControlEventTouchUpInside];
-    [registView.cancelButton addTarget:self action:@selector(backToLoginView) forControlEvents:UIControlEventTouchUpInside];
+    [_registView.confirmButton addTarget:self action:@selector(confirmRegist) forControlEvents:UIControlEventTouchUpInside];
+    [_registView.cancelButton addTarget:self action:@selector(backToLoginView) forControlEvents:UIControlEventTouchUpInside];
     
     //set name textfield
-    LTView *nameLTView = (LTView *)[registView viewWithTag:1000];
+    LTView *nameLTView = (LTView *)[_registView viewWithTag:1000];
     nameLTView.textField.tag = NAME_TAG;
     nameLTView.textField.delegate = self;
     [nameLTView.textField becomeFirstResponder];
     
     //set password textfield
-    LTView *passLTView = (LTView *)[registView viewWithTag:1001];
+    LTView *passLTView = (LTView *)[_registView viewWithTag:1001];
     passLTView.textField.tag = PASS_TAG;
     passLTView.textField.delegate = self;
     
     //set confirm textfield
-    LTView *confirmLTView = (LTView *)[registView viewWithTag:1002];
+    LTView *confirmLTView = (LTView *)[_registView viewWithTag:1002];
     confirmLTView.textField.tag = CONFIRM_TAG;
     confirmLTView.textField.delegate = self;
     
     //set tele textfield
-    LTView *teleLTView = (LTView *)[registView viewWithTag:1003];
+    LTView *teleLTView = (LTView *)[_registView viewWithTag:1003];
     teleLTView.textField.tag = TELE_TAG;
     teleLTView.textField.delegate = self;
     
     //set email textfield
-    LTView *emailLTView = (LTView *)[registView viewWithTag:1004];
+    LTView *emailLTView = (LTView *)[_registView viewWithTag:1004];
     emailLTView.textField.tag = EMAIL_TAG;
     emailLTView.textField.delegate = self;
     
-    self.view = registView;
+    self.view = _registView;
     self.view.backgroundColor = [UIColor whiteColor];
     UIBarButtonItem *didRegistItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirmRegist)];
     self.navigationItem.rightBarButtonItem = didRegistItem;
-    [registView release];
+    [_registView release];
 }
 
 - (void)didReceiveMemoryWarning {

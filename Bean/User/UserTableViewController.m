@@ -10,6 +10,7 @@
 #import "MyActivityTableViewController.h"
 #import "MyMovieTableViewController.h"  
 #import "LoginViewController.h"
+#import "UserSingelton.h"
 
 @interface UserTableViewController ()
 
@@ -70,6 +71,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     switch (indexPath.row) {
         case 0:
         {

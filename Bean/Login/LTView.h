@@ -15,9 +15,9 @@
 
 @interface LTView : UIView
 
--(instancetype)initWithFrame:(CGRect)frame text:(NSString *)text placeholder:(NSString *)placehoder;
+@property (retain, readonly, nonatomic) UILabel *label;
+@property (retain, readonly, nonatomic) UITextField *textField;
 
-@property (retain, nonatomic) UILabel *label;
-@property (retain, nonatomic) UITextField *textField;
+-(instancetype)initWithFrame:(CGRect)frame text:(NSString *)text placeholder:(NSString *)placehoder;
 
 @end

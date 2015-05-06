@@ -7,6 +7,8 @@
 //
 
 #import "LTView.h"
+#import "UILabel+Additional.h"
+#import "UITextField+Additional.h"
 
 @implementation LTView
 
@@ -36,25 +38,21 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        CGFloat width = frame.size.width - 15;
-        CGFloat height = frame.size.height - 4;
+        CGFloat width = frame.size.width;
+        CGFloat height = frame.size.height;
         
-        _label = [[UILabel alloc]initWithFrame:CGRectMake(5, 2, width / 3, height)];
+        _label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, width * 0.3, height)];
         _label.textAlignment = NSTextAlignmentLeft;
-//        _label.backgroundColor = [UIColor whiteColor];
         _label.text = text;
-//        self.labelText = text;
         
-        _textField = [[UITextField alloc]initWithFrame:CGRectMake(_label.frame.origin.x + _label.frame.size.width + 5, 2, 2 * width / 3, height)];
+        _textField = [[UITextField alloc]initWithFrame:CGRectMake(width * 0.3, 0, width * 0.7, height)];
         _textField.placeholder = placehoder;
         _textField.borderStyle = UITextBorderStyleRoundedRect;
-//        _textField.delegate = self;
-//        self.placeholder = placehoder;
         
         [self addSubview:_label];
         [self addSubview:_textField];
-        
     }
     return self;
 }
+
 @end

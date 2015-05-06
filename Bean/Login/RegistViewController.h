@@ -10,7 +10,7 @@
 @class RegistView;
 
 @interface RegistViewController : UIViewController<UITextFieldDelegate>
-
+@property (retain, nonatomic) RegistView *registView;
 - (void)recycleKeyboard:(RegistView *)registView;
 
 @end

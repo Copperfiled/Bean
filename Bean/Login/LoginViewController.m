@@ -26,14 +26,19 @@
 
 -(void)recycleKeyboard:(LoginView *)loginView
 {
-        LTView *nameLTView = (LTView *)[loginView viewWithTag:1000];
-        LTView *passLTView = (LTView *)[loginView viewWithTag:1001];
-        if ([nameLTView.textField isFirstResponder]) {
-            [nameLTView.textField resignFirstResponder];
-        } else if ([passLTView.textField isFirstResponder])
-        {
-            [passLTView.textField resignFirstResponder];
-        }
+    LTView *nameLTView = (LTView *)[loginView viewWithTag:1000];
+    LTView *passLTView = (LTView *)[loginView viewWithTag:1001];
+    if ([nameLTView.textField isFirstResponder]) {
+        [nameLTView.textField resignFirstResponder];
+    } else if ([passLTView.textField isFirstResponder])
+    {
+        [passLTView.textField resignFirstResponder];
+    }
+}
+
+- (void)back
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark - UITextField delegate
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -51,10 +56,14 @@
 }
 - (void)login
 {
+    NSString *name = ((LTView *)[self.view viewWithTag:1000]).textField.text;//nameTF
+    NSString *pass = ((LTView *)[self.view viewWithTag:1001]).textField.text;//passTF
+    
+    NSUserDefaults *users = [NSUserDefaults standardUserDefaults];
+    NSArray *userArray = [users objectForKey:name];
+    
     UserSingelton *singleton = [UserSingelton shareInstance];
-    LTView *ltV = (LTView *)[self.view viewWithTag:1000];//nameTF
-    LTView *ltV2 = (LTView *)[self.view viewWithTag:1001];//passTF
-    if ([ltV.textField.text isEqualToString:@"admin"] && [ltV2.textField.text isEqualToString:@"admin"])
+    if ([name isEqualToString:userArray[0]] && [pass isEqualToString:userArray[1]])
     {
         //login succeed
         singleton.isLogin = YES;
@@ -100,8 +109,12 @@
     ltV2.textField.tag = PASSWORDFIELD_TAG;
     
     self.view = loginView;
-    self.view.backgroundColor = [UIColor whiteColor];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    //新增
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = backItem;
+    self.navigationController.hidesBarsOnTap = YES;
     [loginView release];
 
 }

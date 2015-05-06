@@ -9,6 +9,11 @@
 #import "LoginView.h"
 #import "LTView.h"
 
+#define LEFTPADDING 30
+#define TOPPADDING 100
+#define LTVHEIGHT 30
+#define VERTICALPADDING 30
+
 @implementation LoginView
 
 //处理屏幕旋转
@@ -58,27 +63,28 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        CGFloat width = frame.size.width;
+//        CGFloat height = frame.size.height;
+        
         NSArray *textArray = @[@"name", @"password"];
         NSArray *placeholder = @[@"Enter name", @"Enter password"];
         
         for (int i = 0; i < 2; ++i) {
-            LTView *ltV = [[LTView alloc]initWithFrame:CGRectMake(X_OFFSET, Y_OFFSET + i * 70, 270, 30) text:[textArray objectAtIndex:i]  placeholder:[placeholder objectAtIndex:i]];
+            LTView *ltV = [[LTView alloc]initWithFrame:CGRectMake(LEFTPADDING, TOPPADDING + i * 60, width - 2 * LEFTPADDING, LTVHEIGHT) text:[textArray objectAtIndex:i]  placeholder:[placeholder objectAtIndex:i]];
             ltV.tag = 1000 + i;
             [self addSubview:ltV];
             [ltV release];
         }
         //set loginButton
         _loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_loginButton setTitle:@"login" forState:UIControlStateNormal];
-//        [_loginButton setBackgroundImage:[UIImage imageNamed:@"loginButton.jpg"] forState:UIControlStateNormal];
-        _loginButton.frame = CGRectMake(50, 200, 50, 20);
+        [_loginButton setBackgroundImage:[UIImage imageNamed:@"login_button"] forState:UIControlStateNormal];
+        _loginButton.frame = CGRectMake(LEFTPADDING, TOPPADDING + 2 * LTVHEIGHT + 2 * VERTICALPADDING, 100, 50);
         [self addSubview:_loginButton];
         
         //set regist button
         _registButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [_registButton setTitle:@"regist" forState:UIControlStateNormal];
-//        [_registButton setBackgroundImage:[UIImage imageNamed:@"registButton.png"] forState:UIControlStateNormal];
-        _registButton.frame = CGRectMake(120, 200, 50, 20);
+        [_registButton setBackgroundImage:[UIImage imageNamed:@"register_button"] forState:UIControlStateNormal];
+        _registButton.frame = CGRectMake(150, TOPPADDING + 2 * LTVHEIGHT + 2 * VERTICALPADDING, 100, 50);
         [self addSubview:_registButton];
         
         //set forget button
@@ -86,8 +92,7 @@
         [_cancelButton setTitle:@"forget" forState:UIControlStateNormal];
         _cancelButton.frame = CGRectMake(190, 200, 50, 20);
         [self addSubview:_cancelButton];
-//        self.backgroundColor = [UIColor colorWithRed:12.32/255.0 green:-81.32/255.0 blue:-7.32/255.0 alpha:1.0];
-//        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
