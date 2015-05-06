@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C22170181AFA449B00B625E2 /* LTView.m in Sources */ = {isa = PBXBuildFile; fileRef = C221700E1AFA449B00B625E2 /* LTView.m */; };
+		C22170191AFA449B00B625E2 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C22170111AFA449B00B625E2 /* LoginView.m */; };
+		C221701A1AFA449B00B625E2 /* RegistView.m in Sources */ = {isa = PBXBuildFile; fileRef = C22170131AFA449B00B625E2 /* RegistView.m */; };
+		C221701B1AFA449B00B625E2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22170151AFA449B00B625E2 /* LoginViewController.m */; };
+		C221701C1AFA449B00B625E2 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22170171AFA449B00B625E2 /* RegistViewController.m */; };
 		C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB8D91AF8A4F900B47AD5 /* main.m */; };
 		C25EB8DD1AF8A4F900B47AD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB8DC1AF8A4F900B47AD5 /* AppDelegate.m */; };
 		C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25EB8DE1AF8A4F900B47AD5 /* Images.xcassets */; };
@@ -23,14 +28,7 @@
 		C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */; };
 		C2CC2DE91AF9A829005FE9B4 /* UILabel+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */; };
 		C2CC2DED1AF9A915005FE9B4 /* UITextField+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */; };
-		C2CC2DF01AF9BC14005FE9B4 /* loginButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CC2DEE1AF9BC14005FE9B4 /* loginButton.png */; };
-		C2CC2DF11AF9BC14005FE9B4 /* registButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CC2DEF1AF9BC14005FE9B4 /* registButton.png */; };
 		C2CC2DF51AF9C91A005FE9B4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DF41AF9C91A005FE9B4 /* User.m */; };
-		C2F8659F1AF8EFF400074283 /* LTView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865981AF8EFF400074283 /* LTView.m */; };
-		C2F865A01AF8EFF400074283 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8659A1AF8EFF400074283 /* LoginView.m */; };
-		C2F865A11AF8EFF400074283 /* RegistView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F8659C1AF8EFF400074283 /* RegistView.m */; };
-		C2F865A71AF8F11B00074283 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865A41AF8F11B00074283 /* LoginViewController.m */; };
-		C2F865A81AF8F11B00074283 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F865A61AF8F11B00074283 /* RegistViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C221700E1AFA449B00B625E2 /* LTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTView.m; sourceTree = "<group>"; };
+		C221700F1AFA449B00B625E2 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		C22170101AFA449B00B625E2 /* LTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTView.h; sourceTree = "<group>"; };
+		C22170111AFA449B00B625E2 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		C22170121AFA449B00B625E2 /* RegistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistView.h; sourceTree = "<group>"; };
+		C22170131AFA449B00B625E2 /* RegistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistView.m; sourceTree = "<group>"; };
+		C22170141AFA449B00B625E2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C22170151AFA449B00B625E2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C22170161AFA449B00B625E2 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
+		C22170171AFA449B00B625E2 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		C25EB8D41AF8A4F900B47AD5 /* Bean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25EB8D81AF8A4F900B47AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C25EB8D91AF8A4F900B47AD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,20 +84,8 @@
 		C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Additional.m"; sourceTree = "<group>"; };
 		C2CC2DEB1AF9A915005FE9B4 /* UITextField+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Additional.h"; sourceTree = "<group>"; };
 		C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Additional.m"; sourceTree = "<group>"; };
-		C2CC2DEE1AF9BC14005FE9B4 /* loginButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginButton.png; sourceTree = "<group>"; };
-		C2CC2DEF1AF9BC14005FE9B4 /* registButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = registButton.png; sourceTree = "<group>"; };
 		C2CC2DF31AF9C91A005FE9B4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		C2CC2DF41AF9C91A005FE9B4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		C2F865971AF8EFF400074283 /* LTView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTView.h; sourceTree = "<group>"; };
-		C2F865981AF8EFF400074283 /* LTView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTView.m; sourceTree = "<group>"; };
-		C2F865991AF8EFF400074283 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
-		C2F8659A1AF8EFF400074283 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
-		C2F8659B1AF8EFF400074283 /* RegistView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistView.h; sourceTree = "<group>"; };
-		C2F8659C1AF8EFF400074283 /* RegistView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistView.m; sourceTree = "<group>"; };
-		C2F865A31AF8F11B00074283 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		C2F865A41AF8F11B00074283 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		C2F865A51AF8F11B00074283 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
-		C2F865A61AF8F11B00074283 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,18 +195,16 @@
 		C25EB8F91AF8A60000B47AD5 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C2F865A31AF8F11B00074283 /* LoginViewController.h */,
-				C2F865A41AF8F11B00074283 /* LoginViewController.m */,
-				C2F865A51AF8F11B00074283 /* RegistViewController.h */,
-				C2F865A61AF8F11B00074283 /* RegistViewController.m */,
-				C2F865971AF8EFF400074283 /* LTView.h */,
-				C2F865981AF8EFF400074283 /* LTView.m */,
-				C2F865991AF8EFF400074283 /* LoginView.h */,
-				C2F8659A1AF8EFF400074283 /* LoginView.m */,
-				C2F8659B1AF8EFF400074283 /* RegistView.h */,
-				C2F8659C1AF8EFF400074283 /* RegistView.m */,
-				C2CC2DEE1AF9BC14005FE9B4 /* loginButton.png */,
-				C2CC2DEF1AF9BC14005FE9B4 /* registButton.png */,
+				C221700F1AFA449B00B625E2 /* LoginView.h */,
+				C22170111AFA449B00B625E2 /* LoginView.m */,
+				C221700E1AFA449B00B625E2 /* LTView.m */,
+				C22170101AFA449B00B625E2 /* LTView.h */,
+				C22170121AFA449B00B625E2 /* RegistView.h */,
+				C22170131AFA449B00B625E2 /* RegistView.m */,
+				C22170141AFA449B00B625E2 /* LoginViewController.h */,
+				C22170151AFA449B00B625E2 /* LoginViewController.m */,
+				C22170161AFA449B00B625E2 /* RegistViewController.h */,
+				C22170171AFA449B00B625E2 /* RegistViewController.m */,
 			);
 			name = Login;
 			path = Bean/Login;
@@ -355,9 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25EB8E21AF8A4F900B47AD5 /* LaunchScreen.xib in Resources */,
-				C2CC2DF11AF9BC14005FE9B4 /* registButton.png in Resources */,
 				C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */,
-				C2CC2DF01AF9BC14005FE9B4 /* loginButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,25 +367,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2F865A11AF8EFF400074283 /* RegistView.m in Sources */,
+				C221701A1AFA449B00B625E2 /* RegistView.m in Sources */,
 				C25EB9171AF8B72E00B47AD5 /* MyMovieTableViewController.m in Sources */,
 				C25EB9141AF8B72100B47AD5 /* MyActivityTableViewController.m in Sources */,
-				C2F865A01AF8EFF400074283 /* LoginView.m in Sources */,
 				C25EB9111AF8B67F00B47AD5 /* MovieDetailViewController.m in Sources */,
 				C25EB90B1AF8A75300B47AD5 /* UserTableViewController.m in Sources */,
 				C2CC2DED1AF9A915005FE9B4 /* UITextField+Additional.m in Sources */,
 				C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */,
-				C2F8659F1AF8EFF400074283 /* LTView.m in Sources */,
 				C25EB9021AF8A6E700B47AD5 /* ActivityListTableViewController.m in Sources */,
 				C25EB8DD1AF8A4F900B47AD5 /* AppDelegate.m in Sources */,
 				C2CC2DE91AF9A829005FE9B4 /* UILabel+Additional.m in Sources */,
 				C25EB9081AF8A72F00B47AD5 /* MovieListTableViewController.m in Sources */,
+				C22170191AFA449B00B625E2 /* LoginView.m in Sources */,
+				C221701C1AFA449B00B625E2 /* RegistViewController.m in Sources */,
 				C25EB9051AF8A70800B47AD5 /* CinemaListTableViewController.m in Sources */,
 				C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */,
+				C221701B1AFA449B00B625E2 /* LoginViewController.m in Sources */,
 				C2CC2DF51AF9C91A005FE9B4 /* User.m in Sources */,
 				C25EB90E1AF8B2CC00B47AD5 /* ActivityDetailViewController.m in Sources */,
-				C2F865A81AF8F11B00074283 /* RegistViewController.m in Sources */,
-				C2F865A71AF8F11B00074283 /* LoginViewController.m in Sources */,
+				C22170181AFA449B00B625E2 /* LTView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +436,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yayun Cui (G392G3GC66)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -461,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -485,6 +478,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yayun Cui (G392G3GC66)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -496,7 +490,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -508,9 +502,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yayun Cui (G392G3GC66)";
 				INFOPLIST_FILE = Bean/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dc4ded32-56eb-4b5a-b86b-0ac2fa1038f6";
 			};
 			name = Debug;
 		};
@@ -519,9 +515,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yayun Cui (G392G3GC66)";
 				INFOPLIST_FILE = Bean/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "dc4ded32-56eb-4b5a-b86b-0ac2fa1038f6";
 			};
 			name = Release;
 		};

@@ -22,6 +22,11 @@
 
 @implementation LoginViewController
 
+- (void)dealloc
+{
+    [_loginView release];
+    [super dealloc];
+}
 #pragma mark----------------Actions--------------------
 
 -(void)recycleKeyboard:(LoginView *)loginView
@@ -89,36 +94,37 @@
     
 }
 #pragma mark-------------------control view----------------
+- (void)loadView
+{
+    _loginView = [[LoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.view = _loginView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Login";
     // Do any additional setup after loading the view.
-    LoginView *loginView = [[LoginView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    [loginView.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-    [loginView.registButton addTarget:self action:@selector(enterRegistView) forControlEvents:UIControlEventTouchUpInside];
-    [loginView.cancelButton addTarget:self action:@selector(findPassword) forControlEvents:UIControlEventTouchUpInside];
+    [_loginView.loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+    [_loginView.registButton addTarget:self action:@selector(enterRegistView) forControlEvents:UIControlEventTouchUpInside];
+    [_loginView.cancelButton addTarget:self action:@selector(findPassword) forControlEvents:UIControlEventTouchUpInside];
     
     //设置loginView的target/action
-    loginView.target = self;
-    loginView.action = @selector(recycleKeyboard:);
+    _loginView.target = self;
+    _loginView.action = @selector(recycleKeyboard:);
     
-    LTView *ltV = (LTView *)[loginView viewWithTag:1000];//nameTF
+    LTView *ltV = (LTView *)[_loginView viewWithTag:1000];//nameTF
     ltV.textField.delegate = self;
     ltV.textField.tag = NAMEFIELD_TAG;
     [ltV.textField becomeFirstResponder];
     
-    LTView *ltV2 = (LTView *)[loginView viewWithTag:1001];
+    LTView *ltV2 = (LTView *)[_loginView viewWithTag:1001];
     ltV2.textField.delegate = self;
     ltV2.textField.tag = PASSWORDFIELD_TAG;
-    
-    self.view = loginView;
     
     self.view.backgroundColor = [UIColor whiteColor];
     //新增
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithTitle:@"back" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backItem;
     self.navigationController.hidesBarsOnTap = YES;
-    [loginView release];
 
 }
 

@@ -23,6 +23,11 @@
 
 @implementation RegistViewController
 
+- (void)dealloc
+{
+    [_registView release];
+    [super dealloc];
+}
 #pragma mark--------------Actions-----------------------
 //回收键盘
 -(void)recycleKeyboard:(RegistView *)registView
@@ -147,7 +152,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     UIBarButtonItem *didRegistItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(confirmRegist)];
     self.navigationItem.rightBarButtonItem = didRegistItem;
-    [_registView release];
 }
 
 - (void)didReceiveMemoryWarning {

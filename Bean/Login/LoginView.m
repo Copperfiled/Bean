@@ -71,6 +71,7 @@
         
         for (int i = 0; i < 2; ++i) {
             LTView *ltV = [[LTView alloc]initWithFrame:CGRectMake(LEFTPADDING, TOPPADDING + i * 60, width - 2 * LEFTPADDING, LTVHEIGHT) text:[textArray objectAtIndex:i]  placeholder:[placeholder objectAtIndex:i]];
+            NSLog(@"ltv frame : %@", NSStringFromCGRect(ltV.frame));
             ltV.tag = 1000 + i;
             [self addSubview:ltV];
             [ltV release];

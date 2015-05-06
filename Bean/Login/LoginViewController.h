@@ -13,6 +13,7 @@ typedef void (^SuccessBlock) ();
 
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
+@property (nonatomic, retain) LoginView *loginView;
 @property (nonatomic, copy) SuccessBlock successBlock;
 
 - (void)recycleKeyboard:(LoginView *)loginView;
