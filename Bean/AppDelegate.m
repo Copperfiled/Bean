@@ -7,10 +7,13 @@
 //
 
 #import "AppDelegate.h"
+
 #import "ActivityListTableViewController.h"
 #import "CinemaListTableViewController.h"
 #import "MovieListTableViewController.h"    
 #import "UserTableViewController.h" 
+
+#import "UINavigationBar+NavBarCustomImage.h"
 
 @interface AppDelegate ()
 
@@ -35,6 +38,8 @@
     UserTableViewController *userVC = [[UserTableViewController alloc]initWithStyle:UITableViewStylePlain];
     
     UINavigationController *activityNav = [[UINavigationController alloc]initWithRootViewController:activityVC];
+    [activityNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
+//    [activityNav navigationBar];
     activityNav.tabBarItem.title = @"Activity";
     
     UINavigationController *movieNav = [[UINavigationController alloc]initWithRootViewController:movieVC];

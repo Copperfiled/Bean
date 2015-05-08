@@ -26,6 +26,11 @@
 		C25EB9141AF8B72100B47AD5 /* MyActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9131AF8B72100B47AD5 /* MyActivityTableViewController.m */; };
 		C25EB9171AF8B72E00B47AD5 /* MyMovieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9161AF8B72E00B47AD5 /* MyMovieTableViewController.m */; };
 		C25EB9221AF8C1C700B47AD5 /* UserSingelton.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */; };
+		C27C3C271AFB81D500C6FCDF /* ActivityList.json in Resources */ = {isa = PBXBuildFile; fileRef = C27C3C261AFB81D500C6FCDF /* ActivityList.json */; };
+		C27C3C291AFB831400C6FCDF /* MovieList.txt in Resources */ = {isa = PBXBuildFile; fileRef = C27C3C281AFB831400C6FCDF /* MovieList.txt */; };
+		C27C3C5C1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C3C5B1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.m */; };
+		C27C3C5F1AFB8F3300C6FCDF /* ActivityListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C3C5E1AFB8F3300C6FCDF /* ActivityListTableViewCell.m */; };
+		C27C3C621AFB968300C6FCDF /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C3C611AFB968300C6FCDF /* Activity.m */; };
 		C2CC2DE91AF9A829005FE9B4 /* UILabel+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */; };
 		C2CC2DED1AF9A915005FE9B4 /* UITextField+Additional.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */; };
 		C2CC2DF51AF9C91A005FE9B4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CC2DF41AF9C91A005FE9B4 /* User.m */; };
@@ -80,6 +85,14 @@
 		C25EB9161AF8B72E00B47AD5 /* MyMovieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMovieTableViewController.m; sourceTree = "<group>"; };
 		C25EB9201AF8C1C700B47AD5 /* UserSingelton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSingelton.h; sourceTree = "<group>"; };
 		C25EB9211AF8C1C700B47AD5 /* UserSingelton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSingelton.m; sourceTree = "<group>"; };
+		C27C3C261AFB81D500C6FCDF /* ActivityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActivityList.json; sourceTree = "<group>"; };
+		C27C3C281AFB831400C6FCDF /* MovieList.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MovieList.txt; sourceTree = "<group>"; };
+		C27C3C5A1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+NavBarCustomImage.h"; sourceTree = "<group>"; };
+		C27C3C5B1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+NavBarCustomImage.m"; sourceTree = "<group>"; };
+		C27C3C5D1AFB8F3300C6FCDF /* ActivityListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListTableViewCell.h; sourceTree = "<group>"; };
+		C27C3C5E1AFB8F3300C6FCDF /* ActivityListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListTableViewCell.m; sourceTree = "<group>"; };
+		C27C3C601AFB968300C6FCDF /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Activity.h; sourceTree = "<group>"; };
+		C27C3C611AFB968300C6FCDF /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Activity.m; sourceTree = "<group>"; };
 		C2CC2DE71AF9A829005FE9B4 /* UILabel+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Additional.h"; sourceTree = "<group>"; };
 		C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Additional.m"; sourceTree = "<group>"; };
 		C2CC2DEB1AF9A915005FE9B4 /* UITextField+Additional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Additional.h"; sourceTree = "<group>"; };
@@ -173,8 +186,11 @@
 		C25EB8F71AF8A60000B47AD5 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				C27C3C261AFB81D500C6FCDF /* ActivityList.json */,
 				C25EB9001AF8A6E700B47AD5 /* ActivityListTableViewController.h */,
 				C25EB9011AF8A6E700B47AD5 /* ActivityListTableViewController.m */,
+				C27C3C5D1AFB8F3300C6FCDF /* ActivityListTableViewCell.h */,
+				C27C3C5E1AFB8F3300C6FCDF /* ActivityListTableViewCell.m */,
 				C25EB90C1AF8B2CC00B47AD5 /* ActivityDetailViewController.h */,
 				C25EB90D1AF8B2CC00B47AD5 /* ActivityDetailViewController.m */,
 			);
@@ -213,6 +229,7 @@
 		C25EB8FA1AF8A60000B47AD5 /* Movie */ = {
 			isa = PBXGroup;
 			children = (
+				C27C3C281AFB831400C6FCDF /* MovieList.txt */,
 				C25EB9061AF8A72F00B47AD5 /* MovieListTableViewController.h */,
 				C25EB9071AF8A72F00B47AD5 /* MovieListTableViewController.m */,
 				C25EB90F1AF8B67F00B47AD5 /* MovieDetailViewController.h */,
@@ -253,6 +270,8 @@
 				C2CC2DE81AF9A829005FE9B4 /* UILabel+Additional.m */,
 				C2CC2DEB1AF9A915005FE9B4 /* UITextField+Additional.h */,
 				C2CC2DEC1AF9A915005FE9B4 /* UITextField+Additional.m */,
+				C27C3C5A1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.h */,
+				C27C3C5B1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.m */,
 			);
 			name = Common;
 			path = Bean/Common;
@@ -263,6 +282,8 @@
 			children = (
 				C2CC2DF31AF9C91A005FE9B4 /* User.h */,
 				C2CC2DF41AF9C91A005FE9B4 /* User.m */,
+				C27C3C601AFB968300C6FCDF /* Activity.h */,
+				C27C3C611AFB968300C6FCDF /* Activity.m */,
 			);
 			name = Model;
 			path = Bean/Model;
@@ -349,7 +370,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25EB8E21AF8A4F900B47AD5 /* LaunchScreen.xib in Resources */,
+				C27C3C271AFB81D500C6FCDF /* ActivityList.json in Resources */,
 				C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */,
+				C27C3C291AFB831400C6FCDF /* MovieList.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,9 +390,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C27C3C5F1AFB8F3300C6FCDF /* ActivityListTableViewCell.m in Sources */,
 				C221701A1AFA449B00B625E2 /* RegistView.m in Sources */,
 				C25EB9171AF8B72E00B47AD5 /* MyMovieTableViewController.m in Sources */,
 				C25EB9141AF8B72100B47AD5 /* MyActivityTableViewController.m in Sources */,
+				C27C3C621AFB968300C6FCDF /* Activity.m in Sources */,
 				C25EB9111AF8B67F00B47AD5 /* MovieDetailViewController.m in Sources */,
 				C25EB90B1AF8A75300B47AD5 /* UserTableViewController.m in Sources */,
 				C2CC2DED1AF9A915005FE9B4 /* UITextField+Additional.m in Sources */,
@@ -379,6 +404,7 @@
 				C2CC2DE91AF9A829005FE9B4 /* UILabel+Additional.m in Sources */,
 				C25EB9081AF8A72F00B47AD5 /* MovieListTableViewController.m in Sources */,
 				C22170191AFA449B00B625E2 /* LoginView.m in Sources */,
+				C27C3C5C1AFB8B5300C6FCDF /* UINavigationBar+NavBarCustomImage.m in Sources */,
 				C221701C1AFA449B00B625E2 /* RegistViewController.m in Sources */,
 				C25EB9051AF8A70800B47AD5 /* CinemaListTableViewController.m in Sources */,
 				C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */,

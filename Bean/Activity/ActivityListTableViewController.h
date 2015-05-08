@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ActivityListTableViewController : UITableViewController
+
+@property (retain, nonatomic) NSMutableArray *activityMArray;
 
 @end

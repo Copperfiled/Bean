@@ -8,6 +8,8 @@
 
 #import "ActivityListTableViewController.h"
 #import "ActivityDetailViewController.h"
+#import "ActivityListTableViewCell.h"
+#import "Activity.h"
 
 @interface ActivityListTableViewController ()
 
@@ -18,11 +20,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Activity";
+    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     // Uncomment the following line to preserve selection between presentations.
 //     self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    _activityMArray = [[NSMutableArray alloc]init];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ActivityList" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSMutableDictionary *mDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+    NSMutableArray *eventsArray = [mDic valueForKey:@"events"];
+    for (NSDictionary *dic in eventsArray) {
+//        NSMutableDictionary *tmpDic = [[NSMutableDictionary alloc]init];
+//        tmpDic setValue:<#(id)#> forKey:<#(NSString *)#>
+        Activity *activity = [[Activity alloc]init];
+        [activity setValuesForKeysWithDictionary:dic];
+        [_activityMArray addObject:activity];
+        [activity release];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,6 +49,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -41,18 +64,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return _activityMArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"activity";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    ActivityListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     if (nil == cell) {
-        cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
+        cell = [[[ActivityListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
     }
     // Configure the cell...
-    cell.textLabel.text = @"Activity";
+    cell.activity = _activityMArray[indexPath.row];
     return cell;
 }
 
