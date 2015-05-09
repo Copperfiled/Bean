@@ -18,7 +18,8 @@
     [_address release];
     [_category_name release];
     [_image release];
-    
+    [_title release];
+    [_owner release];
     [super dealloc];
 }
 

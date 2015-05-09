@@ -10,7 +10,6 @@
 
 @implementation UITextField (Additional)
 
-
 - (instancetype)initWithFrame:(CGRect)frame placeholder:(NSString *)placeholder isSecureEntry:(BOOL)isSecureEntry keyboardType:(UIKeyboardType)keyboardType
 {
     self = [self initWithFrame:frame];
@@ -26,4 +25,5 @@
 {
     return [self initWithFrame:frame placeholder:placeholder isSecureEntry:isSecureEntry keyboardType:UIKeyboardTypeDefault];
 }
+
 @end

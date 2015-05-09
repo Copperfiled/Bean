@@ -10,4 +10,6 @@
 
 @interface MovieListTableViewController : UITableViewController
 
+@property (nonatomic, retain) NSMutableArray *movieArray;
+
 @end

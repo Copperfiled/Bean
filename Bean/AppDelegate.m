@@ -40,16 +40,22 @@
     UINavigationController *activityNav = [[UINavigationController alloc]initWithRootViewController:activityVC];
     [activityNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
 //    [activityNav navigationBar];
+    activityNav.tabBarItem.image = [UIImage imageNamed:@"activity"];
     activityNav.tabBarItem.title = @"Activity";
     
     UINavigationController *movieNav = [[UINavigationController alloc]initWithRootViewController:movieVC];
     movieNav.tabBarItem.title = @"Movie";
+    movieNav.tabBarItem.image = [UIImage imageNamed:@"movie"];
+    [movieNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
     
     UINavigationController *userNav = [[UINavigationController alloc]initWithRootViewController:userVC];
     userNav.tabBarItem.title = @"MyPage";
+    userNav.tabBarItem.image = [UIImage imageNamed:@"user"];
     
     UINavigationController *cinemaNav = [[UINavigationController alloc]initWithRootViewController:cinemaVC];
     cinemaNav.tabBarItem.title = @"Cinema";
+    [cinemaNav.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
+    cinemaNav.tabBarItem.image = [UIImage imageNamed:@"cinema"];
     
     UITabBarController *tabBarVC = [[UITabBarController alloc]init];
     tabBarVC.viewControllers = @[activityNav, movieNav, cinemaNav, userNav];

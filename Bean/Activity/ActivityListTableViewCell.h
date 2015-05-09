@@ -10,10 +10,10 @@
 
 @class Activity;
 
-@interface ActivityListTableViewCell : UITableViewCell
+@interface ActivityListTableViewCell : UITableViewCell/*<NSURLConnectionDataDelegate>*/
 
 @property (nonatomic, readonly, retain) UIImageView *cellImgView;
-@property (nonatomic, readonly, retain) UILabel *contentLabel;
+@property (nonatomic, readonly, retain) UILabel *titleLabel;
 @property (nonatomic, readonly, retain) UIImageView *shareImageView;
 @property (nonatomic, readonly, retain) UIImage *dateImg;
 @property (nonatomic, readonly, retain) UIImage *spotImg;
@@ -27,6 +27,7 @@
 @property (nonatomic, readonly, retain) UILabel *endDateLabel;
 
 @property (nonatomic, retain) Activity *activity;
+@property (nonatomic, retain) NSMutableData *imageData;
 
 #pragma mark - init methods-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

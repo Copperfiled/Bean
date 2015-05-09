@@ -8,6 +8,8 @@
 
 #import "MovieListTableViewController.h"
 #import "MovieDetailViewController.h"
+#import "MovieListTableViewCell.h"
+#import "Movie.h"
 
 @interface MovieListTableViewController ()
 
@@ -24,8 +26,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Movie";
-    UIBarButtonItem *changeItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(changeLayout)];
+//    UIBarButtonItem *changeItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemReply target:self action:@selector(changeLayout)];
+    UIBarButtonItem *changeItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_nav_collection"] style:UIBarButtonItemStylePlain target:self action:@selector(changeLayout)];
+    changeItem.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = changeItem;
+    
+    _movieArray = [[NSMutableArray alloc]init];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"MovieList" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSError *error = nil;
+    NSMutableDictionary *mDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:&error];
+    for (NSDictionary *tmpDic in [mDic valueForKey:@"result"]) {
+        Movie *movie = [[Movie alloc]init];
+        [movie setValuesForKeysWithDictionary:tmpDic];
+        [_movieArray addObject:movie];
+        [movie release];
+    }
+    
+    //去掉分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,31 +59,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 160;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return _movieArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"movie";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    MovieListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     // Configure the cell...
     if (nil == cell) {
-        cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]autorelease];
+        cell = [[[MovieListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]autorelease];
     }
     // Configure the cell...
-    cell.textLabel.text = @"Movie";
+
+    cell.movieImgView.image = [UIImage imageNamed:@"picholder"];
+
+    cell.movie = _movieArray[indexPath.row];
     return cell;
 }
 
@@ -72,6 +100,9 @@
 {
     MovieDetailViewController *detailVC = [[MovieDetailViewController alloc]init];
     [self.navigationController pushViewController:detailVC animated:YES];
+    //把movie传给detailVC
+    detailVC.movie = _movieArray[indexPath.row];
+    
     [detailVC release];
 }
 

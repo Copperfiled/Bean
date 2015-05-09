@@ -51,18 +51,20 @@
         LoginViewController *loginVC = [[LoginViewController alloc]init];
         UINavigationController *navC = [[UINavigationController alloc]initWithRootViewController:loginVC];
         [self presentViewController:navC animated:YES completion:nil];
+        [loginVC release];
+        [navC release];
     }
 }
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return _dataSource.count;
 }
@@ -139,13 +141,14 @@
 {
     MyActivityTableViewController *myActivity = [[MyActivityTableViewController alloc]init];
     [self.navigationController pushViewController:myActivity animated:YES];
-    
+    [myActivity release];
 }
 
 - (void)enterMovieDetailViewController
 {
-    MyMovieTableViewController *myMovie = [[MyMovieTableViewController alloc]init];
-    [self.navigationController pushViewController:myMovie animated:YES];
+    MyMovieTableViewController *myMovieVC = [[MyMovieTableViewController alloc]init];
+    [self.navigationController pushViewController:myMovieVC animated:YES];
+    [myMovieVC release];
 }
 
 /*

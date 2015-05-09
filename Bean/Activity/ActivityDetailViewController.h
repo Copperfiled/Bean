@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class Activity;
+@class ActivityDetailView;
+
 @interface ActivityDetailViewController : UIViewController
+
+@property (nonatomic, retain) ActivityDetailView *activityDetailView;
+@property (nonatomic, retain) Activity *activity;
 
 @end

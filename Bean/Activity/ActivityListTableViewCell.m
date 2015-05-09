@@ -31,10 +31,10 @@
         _cellImgView.frame = CGRectMake(kHorizonOffset, kVerticalOffset, rect.size.width - 40, 180);
         [self.contentView addSubview:_cellImgView];
         
-        _contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(kHorizonOffset + 10, kVerticalOffset, rect.size.width - 60, 30)];
+        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(kHorizonOffset + 10, kVerticalOffset, rect.size.width - 60, 30)];
 //        _contentLabel.backgroundColor = [UIColor blueColor];
 //        _contentLabel.text = @"content";
-        [self.contentView addSubview:_contentLabel];
+        [self.contentView addSubview:_titleLabel];
         
         _shareImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"bg_share_large"]];
         _shareImageView.frame = CGRectMake(kHorizonOffset + 2, kVerticalOffset + 30, rect.size.width - 44, 140);
@@ -115,7 +115,7 @@
         
         _movieImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kHorizonOffset + 10 + 20 + 0.59 *rect.size.width, kVerticalOffset + 35, 0.21 *rect.size.width, 130)];
 //        _movieImgView.backgroundColor = [UIColor redColor];
-        _movieImgView.image = [UIImage imageNamed:@"picholder"];
+//        _movieImgView.image = [UIImage imageNamed:@"picholder"];
         [self.contentView addSubview:_movieImgView];
     }
     return self;
@@ -133,9 +133,9 @@
         NSDate *endDate = [formatter dateFromString:activity.end_time];
         
         NSDateFormatter *stringFormatter = [[NSDateFormatter alloc]init];
-        stringFormatter.dateFormat = @"yy-MM HH:mm";
+        stringFormatter.dateFormat = @"MM-dd HH:mm";
         
-        _contentLabel.text = activity.content;
+        _titleLabel.text = activity.title;
         _dateLabel.text = [stringFormatter stringFromDate:beginDate];
         _endDateLabel.text = [stringFormatter stringFromDate:endDate];
         _addressLabl.text = activity.address;
@@ -144,18 +144,37 @@
         _participantLabel.text = [@(activity.participant_count) stringValue];
         
         NSURL *url = [NSURL URLWithString:activity.image];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        _movieImgView.image = [UIImage imageWithData:data];
+//        NSData *data = [NSData dataWithContentsOfURL:url];
+        //GET请求
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+//        request.HTTPMethod = @"POST";
+//        [NSURLConnection sendAsynchronousRequest:request
+//                                           queue:[[NSOperationQueue alloc] init]
+//                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//                                   _movieImgView.image = [UIImage imageWithData:data];
+//                               }];
+        [NSURLConnection connectionWithRequest:request delegate:self];
+        [request release];
+        [stringFormatter release];
         [formatter release];
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
+
+#pragma mark - NSURLConnectionDataDelegate - 
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"%@", response);
+    _imageData = [[NSMutableData alloc]init];
+}
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"正在加载图片");
+    [_imageData appendData:data];
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"图片加载完毕 ---- length : %ld", _imageData.length);
+    _movieImgView.image = [UIImage imageWithData:_imageData];
+}
+
 @end

@@ -8,7 +8,12 @@
 
 #import "MovieDetailViewController.h"
 #import "LoginViewController.h" 
+
+#import "MovieDetailView.h"
+
 #import "UserSingelton.h"
+#import "Movie.h"
+#import "MovieDetail.h"
 
 @interface MovieDetailViewController ()
 
@@ -16,6 +21,11 @@
 
 @implementation MovieDetailViewController
 
+#pragma mark - actions -
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)collect
 {
     UserSingelton *singleton = [UserSingelton shareInstance];
@@ -33,13 +43,43 @@
         NSLog(@"movie detail");
     }
 }
+
+- (void)loadView
+{
+    CGRect rect = [UIScreen mainScreen].bounds;
+    //指定根视图
+    _movieDetailView = [[MovieDetailView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    _movieDetailView.contentSize = CGSizeMake(rect.size.width, 800);
+    _movieDetailView.backgroundColor = [UIColor whiteColor];
+    self.view = _movieDetailView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"movie";
-    UIBarButtonItem *detail = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(collect)];
+    self.navigationItem.title = _movie.movieName;
+    UIBarButtonItem *detail = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_nav_share"] style:UIBarButtonItemStylePlain target:self action:@selector(collect)];
+    detail.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = detail;
     [detail release];
+    
+    //左Button
+    UIBarButtonItem *backBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    backBarItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = backBarItem;
+    [backBarItem release];    
+    
+    //为根视图配置数据
+    NSString *resource = [NSString stringWithFormat:@"m%@", _movie.movieId];
+    NSString *path = [[NSBundle mainBundle]pathForResource:resource ofType:@".txt"];
+    NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:nil];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
+    
+    //传数据
+    MovieDetail *movieDetail = [[MovieDetail alloc]init];
+    [movieDetail setValuesForKeysWithDictionary:[dic valueForKey:@"result"]];
+    _movieDetailView.movieDetail = movieDetail;
+    [movieDetail release];
 }
 
 - (void)didReceiveMemoryWarning {

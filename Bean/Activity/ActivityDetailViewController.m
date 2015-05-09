@@ -8,7 +8,11 @@
 
 #import "ActivityDetailViewController.h"
 #import "LoginViewController.h" 
+
+#import "ActivityDetailView.h"
+
 #import "UserSingelton.h"
+#import "Activity.h"
 
 @interface ActivityDetailViewController ()
 
@@ -16,6 +20,11 @@
 
 @implementation ActivityDetailViewController
 
+#pragma mark - actions -
+- (void) back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)collect
 {
     UserSingelton *userSingle = [UserSingelton shareInstance];
@@ -32,14 +41,33 @@
         NSLog(@"Collect success!");
     }
 }
+- (void)loadView
+{
+    _activityDetailView = [[ActivityDetailView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    _activityDetailView.backgroundColor = [UIColor whiteColor];
+    self.view = _activityDetailView;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"Activity detail";
+
+    //左Button
+    UIBarButtonItem *backBarItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    backBarItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.leftBarButtonItem = backBarItem;
+    [backBarItem release];
     
-    UIBarButtonItem *detailItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(collect)];
+    //右Button
+    UIBarButtonItem *detailItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_nav_share"] style:UIBarButtonItemStylePlain target:self action:@selector(collect)];
+    detailItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = detailItem;
-    [detailItem release];
+    [detailItem release];    
+    
+    //传模型给自己的视图
+    _activityDetailView.activity = _activity;
+    self.navigationItem.title = _activity.title;
+    
 }
 
 - (void)didReceiveMemoryWarning {

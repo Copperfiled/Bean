@@ -75,6 +75,7 @@
         cell = [[[ActivityListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
     }
     // Configure the cell...
+    cell.movieImgView.image = [UIImage imageNamed:@"picholder"];
     cell.activity = _activityMArray[indexPath.row];
     return cell;
 }
@@ -83,6 +84,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc]init];
+    //传模型到详情界面
+    detailVC.activity = _activityMArray[indexPath.row];
+    
     [self.navigationController pushViewController:detailVC animated:YES];
     [detailVC release];
 }

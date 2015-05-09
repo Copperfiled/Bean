@@ -7,6 +7,9 @@
 //
 
 #import "CinemaListTableViewController.h"
+#import "CinemaListTableViewCell.h"
+
+#import "Cinema.h"  
 
 @interface CinemaListTableViewController ()
 
@@ -14,16 +17,33 @@
 
 @implementation CinemaListTableViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Cinema";
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+//     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //解析数据
+    _cinemaArray = [[NSMutableArray alloc]init];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"cinemalist" ofType:@"txt"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSMutableDictionary *tmpDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+    NSMutableDictionary *resultDic = [tmpDic valueForKey:@"result"];
+    NSMutableArray *dataArray = [resultDic valueForKey:@"data"];
+    
+    for (NSDictionary *dic in dataArray) {
+        Cinema *cinema = [[Cinema alloc]init];
+        [cinema setValuesForKeysWithDictionary:dic];
+        [_cinemaArray addObject:cinema];
+        [cinema release];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,6 +51,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //cell height
+    return ([UIScreen mainScreen].bounds.size.height - 64 - 49)/ 4;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -42,21 +67,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 10;
+    return _cinemaArray.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"cinema";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    CinemaListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     // Configure the cell...
     if (nil == cell) {
-        cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]autorelease];
+        cell = [[[CinemaListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]autorelease];
     }
     // Configure the cell...
-    cell.textLabel.text = @"Cinema";
-    
+//    cell.textLabel.text = @"Cinema";
+    cell.cinema = _cinemaArray[indexPath.row];
     return cell;
 }
 

@@ -18,6 +18,9 @@
 @property (nonatomic, retain) NSString *image;
 @property (nonatomic, assign) NSInteger wisher_count;
 @property (nonatomic, assign) NSInteger participant_count;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *owner;
+@property (nonatomic, retain) NSString *image_hlarge;
 
 - (void)dealloc;
 

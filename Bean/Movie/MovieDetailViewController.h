@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class Movie;
+@class MovieDetailView;
+
 @interface MovieDetailViewController : UIViewController
+
+@property (nonatomic, retain) Movie *movie;
+
+@property (nonatomic, retain) MovieDetailView *movieDetailView;
 
 @end
