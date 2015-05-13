@@ -10,6 +10,7 @@
 #import "LoginViewController.h" 
 
 #import "MovieDetailView.h"
+#import "DownloadUtil.h"
 
 #import "UserSingelton.h"
 #import "Movie.h"
@@ -72,9 +73,21 @@
     
     //为根视图配置数据
     //通过ID得到URL
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://project.lanou3g.com/teacher/yihuiyun/lanouproject/searchmovie.php?movieId=%@", _movie.movieId]];
-    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+        
+    DownloadUtil *downloadUtil = [[DownloadUtil alloc]initWithURL:[NSString stringWithFormat:@"http://project.lanou3g.com/teacher/yihuiyun/lanouproject/searchmovie.php?movieId=%@", _movie.movieId]];
+    downloadUtil.downloadBlock = ^(){
+        
+        _urlData = downloadUtil.urlData;
+        
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:_urlData options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
+        
+        //传数据
+        MovieDetail *movieDetail = [[MovieDetail alloc]init];
+        [movieDetail setValuesForKeysWithDictionary:[dic valueForKey:@"result"]];
+        _movieDetailView.movieDetail = movieDetail;
+        [movieDetail release];
+    };
+    [downloadUtil release];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,39 +95,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - NSRULConnectionDataDelegate -
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"movie Detail 收到响应");
-    _urlData = [[NSMutableData alloc]init];
-}
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    NSLog(@"movie Detail 正在接受数据");
-    [_urlData appendData:data];
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSLog(@"movie Detail 接收完毕");
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:_urlData options:NSJSONReadingMutableLeaves | NSJSONReadingMutableContainers error:nil];
-    
-    //传数据
-    MovieDetail *movieDetail = [[MovieDetail alloc]init];
-    [movieDetail setValuesForKeysWithDictionary:[dic valueForKey:@"result"]];
-    _movieDetailView.movieDetail = movieDetail;
-    [movieDetail release];
-    
-//    self.view reloadInputViews
-//    [self.view setNeedsDisplay];
-}
-
-#pragma mark - NSURLConnectionDelegate
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"error : %@", error);
-}
 /*
 #pragma mark - Navigation
 

@@ -17,7 +17,7 @@
 @property (nonatomic, readonly, retain) UILabel *movieNameLabel;
 
 @property (nonatomic, retain) Movie *movie;
-@property (nonatomic, readonly, retain) NSMutableData *imageData;
+@property (nonatomic, retain) NSMutableData *imageData;
 
 //overite methods
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

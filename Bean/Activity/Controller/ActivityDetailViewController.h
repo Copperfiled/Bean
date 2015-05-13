@@ -11,7 +11,7 @@
 @class Activity;
 @class ActivityDetailView;
 
-@interface ActivityDetailViewController : UIViewController
+@interface ActivityDetailViewController : UIViewController<UIScrollViewDelegate>
 
 @property (nonatomic, retain) ActivityDetailView *activityDetailView;
 @property (nonatomic, retain) Activity *activity;

@@ -10,6 +10,7 @@
 #import "UILabel+AdjustHeightForLabel.h"
 
 #import "MovieDetail.h"
+#import "DownloadUtil.h"
 
 #define kHerizonPadding 20
 
@@ -123,32 +124,11 @@
         CGSize size = [UILabel heightForLabel:_plotLabel.text];
         _plotLabel.frame = CGRectMake(20, 20 + height / 4 + 90 + 30 + 10, size.width, size.height);
         
-        NSURL *url = [NSURL URLWithString:_movieDetail.poster];
-        NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:10];
-//        [NSURLConnection sendAsynchronousRequest:request
-//                                           queue:[[NSOperationQueue alloc]init]
-//                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//                                   _posterImgView.image = [UIImage imageWithData:data];
-//                               }];
-        [NSURLConnection connectionWithRequest:request delegate:self];
+        DownloadUtil *downloadUtil = [[DownloadUtil alloc]initWithURL:_movieDetail.poster];
+        downloadUtil.downloadBlock = ^() {
+            _imageData = downloadUtil.urlData;
+            _posterImgView.image = [UIImage imageWithData:_imageData];
+        };
     }
 }
-
-#pragma mark - NSURLConnectionDataDelegate - 
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"受到响应");
-    
-    _imageData = [[NSMutableData alloc]init];
-}
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [_imageData appendData:data];
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    _posterImgView.image = [UIImage imageWithData:_imageData];
-}
-
 @end

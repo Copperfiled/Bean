@@ -14,10 +14,10 @@ typedef void (^downloadDidFinishBlock)();
 
 @property (nonatomic, retain) NSString *url;
 @property (nonatomic, retain) NSMutableData *urlData;
+
 @property (nonatomic, copy) downloadDidFinishBlock downloadBlock;
 
 //init
 - (instancetype)initWithURL:(NSString *)url;
-
 
 @end

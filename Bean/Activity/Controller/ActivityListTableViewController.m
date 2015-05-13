@@ -12,6 +12,7 @@
 #import "Activity.h"
 
 #import "DownloadUtil.h"
+#import "CacheSingleton.h"
 
 @interface ActivityListTableViewController ()
 
@@ -61,12 +62,6 @@
         NSLog(@"data length = %ld", _urlData.length);
         [self.tableView reloadData];
     };
-//    NSLog(@"data length = %ld", _urlData.length);
-    
-//    NSURL *url = [NSURL URLWithString:urlStr];
-//    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
-//    [NSURLConnection connectionWithRequest:request delegate:self];
-//    [request release];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,6 +89,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     static NSString *reuseIdentifier = @"activity";
     ActivityListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
@@ -101,11 +97,84 @@
         cell = [[[ActivityListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
     }
     // Configure the cell...
-    cell.movieImgView.image = [UIImage imageNamed:@"picholder"];
-    cell.activity = _activityMArray[indexPath.row];
+    
+    cell.activity = _activityMArray[indexPath.row];//先不下载图片
+    
+    CacheSingleton *cacheSingleton = [CacheSingleton shareInstance];
+    if (![cacheSingleton.imageCache objectForKey:cell.activity.image]) {
+        //缓存中不存在，则重新下载,并将其存入缓存中
+        if (!self.tableView.dragging && !self.tableView.decelerating) {
+            //不拖拽并且不减速
+            [self startImageDownload:cell.activity.image forIndexPath:indexPath];
+        }
+        //if a download is deferred or in progress, return a placeholder image
+        cell.movieImgView.image = [UIImage imageNamed:@"picholder"];
+    }
+    else
+    {
+        NSLog(@"读取缓存%@", cell.activity.image);
+        cell.movieImgView.image = [cacheSingleton.imageCache objectForKey:cell.activity.image];
+    }
     return cell;
 }
 
+#pragma mark - Table cell image support
+
+- (void) startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexpath
+{
+    Activity *activity = _activityMArray[indexpath.row];
+    
+    DownloadUtil *downloader = [[DownloadUtil alloc]initWithURL:url];
+    downloader.downloadBlock = ^(){
+        ActivityListTableViewCell *cell = (ActivityListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexpath];
+        
+        //Displsy the newly loader image
+        cell.imageData = downloader.urlData;
+        cell.movieImgView.image = [UIImage imageWithData:cell.imageData];
+        
+        if (!!cell.movieImgView.image) {
+            //存入缓存
+            NSLog(@"将%@存入缓存", cell.movieImgView.image);
+            CacheSingleton *cache = [CacheSingleton shareInstance];
+            [cache.imageCache setObject:cell.movieImgView.image forKey:activity.image];
+        }
+    };
+}
+
+//  This method is used in case the user scrolled into a set of cells that don't
+//  have their app icons yet.
+
+- (void)loadImagesForOnscreenRows
+{
+    CacheSingleton *cacheSingleton = [CacheSingleton shareInstance];
+    
+    if (_activityMArray.count > 0) {
+        //得到正在显示行
+        NSArray *visibelPaths = [self.tableView indexPathsForVisibleRows];
+        for (NSIndexPath *indexPath in visibelPaths) {
+            Activity *activity = _activityMArray[indexPath.row];
+            UIImage *image = [cacheSingleton.imageCache objectForKey:activity.image];
+            if (!image) {
+                [self startImageDownload:activity.image forIndexPath:indexPath];
+            }
+        }
+    }
+}
+
+#pragma mark - UIScrollViewDelegate
+
+//load images for all onscreennn rows when scroll is finished
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesForOnscreenRows];
+}
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -114,6 +183,7 @@
     detailVC.activity = _activityMArray[indexPath.row];
     
     [self.navigationController pushViewController:detailVC animated:YES];
+    
     [detailVC release];
 }
 /*

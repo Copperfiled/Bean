@@ -44,7 +44,7 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     //唯一的不同是在这里：解析数据的过程因对象而异。也即是说仍要执行一系列的解析
-    //具体执行何种操作，有对象执行的时候在知道
+    //具体执行何种操作，对象执行的时候才知道
     NSLog(@"下载完成");
     if (!!_downloadBlock) {
         _downloadBlock();
@@ -55,7 +55,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    NSLog(@"下载错误 %@", error);
+    NSLog(@"url:%@, 下载错误 %@", _url, [error localizedDescription]);
 }
 
 @end

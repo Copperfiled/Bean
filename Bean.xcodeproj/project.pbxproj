@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C23E9D7B1B032CD000358592 /* CacheSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = C23E9D7A1B032CD000358592 /* CacheSingleton.m */; };
 		C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB8D91AF8A4F900B47AD5 /* main.m */; };
 		C25EB8DD1AF8A4F900B47AD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB8DC1AF8A4F900B47AD5 /* AppDelegate.m */; };
 		C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C25EB8DE1AF8A4F900B47AD5 /* Images.xcassets */; };
@@ -39,7 +40,6 @@
 		C2A3B3BD1B00763300181CEE /* DownloadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A3B3BC1B00763300181CEE /* DownloadUtil.m */; };
 		C2D44EE41B003E2F003B12E6 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D44EDA1B003E2F003B12E6 /* ActivityDetailViewController.m */; };
 		C2D44EE51B003E2F003B12E6 /* ActivityListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D44EDC1B003E2F003B12E6 /* ActivityListTableViewController.m */; };
-		C2D44EE61B003E2F003B12E6 /* ActivityList.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D44EDE1B003E2F003B12E6 /* ActivityList.json */; };
 		C2D44EE71B003E2F003B12E6 /* ActivityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D44EE11B003E2F003B12E6 /* ActivityDetailView.m */; };
 		C2D44EE81B003E2F003B12E6 /* ActivityListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D44EE31B003E2F003B12E6 /* ActivityListTableViewCell.m */; };
 		C2D44EEB1B004747003B12E6 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D44EEA1B004747003B12E6 /* Activity.m */; };
@@ -56,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C23E9D791B032CD000358592 /* CacheSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheSingleton.h; sourceTree = "<group>"; };
+		C23E9D7A1B032CD000358592 /* CacheSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheSingleton.m; sourceTree = "<group>"; };
 		C25EB8D41AF8A4F900B47AD5 /* Bean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C25EB8D81AF8A4F900B47AD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C25EB8D91AF8A4F900B47AD5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,7 +122,6 @@
 		C2D44EDA1B003E2F003B12E6 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		C2D44EDB1B003E2F003B12E6 /* ActivityListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListTableViewController.h; sourceTree = "<group>"; };
 		C2D44EDC1B003E2F003B12E6 /* ActivityListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListTableViewController.m; sourceTree = "<group>"; };
-		C2D44EDE1B003E2F003B12E6 /* ActivityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ActivityList.json; sourceTree = "<group>"; };
 		C2D44EE01B003E2F003B12E6 /* ActivityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailView.h; sourceTree = "<group>"; };
 		C2D44EE11B003E2F003B12E6 /* ActivityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailView.m; sourceTree = "<group>"; };
 		C2D44EE21B003E2F003B12E6 /* ActivityListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListTableViewCell.h; sourceTree = "<group>"; };
@@ -365,6 +366,8 @@
 		C2A3B3941B00648200181CEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C23E9D791B032CD000358592 /* CacheSingleton.h */,
+				C23E9D7A1B032CD000358592 /* CacheSingleton.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -454,7 +457,6 @@
 			children = (
 				C2D44EE91B004747003B12E6 /* Activity.h */,
 				C2D44EEA1B004747003B12E6 /* Activity.m */,
-				C2D44EDE1B003E2F003B12E6 /* ActivityList.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -550,7 +552,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2D44EE61B003E2F003B12E6 /* ActivityList.json in Resources */,
 				C25EB8E21AF8A4F900B47AD5 /* LaunchScreen.xib in Resources */,
 				C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */,
 			);
@@ -597,6 +598,7 @@
 				C2A3B3A61B00648200181CEE /* UINavigationBar+NavBarCustomImage.m in Sources */,
 				C2A3B3791B0060DE00181CEE /* LoginView.m in Sources */,
 				C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */,
+				C23E9D7B1B032CD000358592 /* CacheSingleton.m in Sources */,
 				C2A3B3A51B00648200181CEE /* UILabel+AdjustHeightForLabel.m in Sources */,
 				C2A3B3781B0060DE00181CEE /* RegistViewController.m in Sources */,
 				C2A3B3691B005F3700181CEE /* CinemaListTableViewController.m in Sources */,

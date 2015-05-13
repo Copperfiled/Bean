@@ -10,7 +10,9 @@
 #import "MyActivityTableViewController.h"
 #import "MyMovieTableViewController.h"  
 #import "LoginViewController.h"
+
 #import "UserSingelton.h"
+#import "CacheSingleton.h"
 
 @interface UserTableViewController ()
 
@@ -108,6 +110,12 @@
         }
             break;
         default:
+        {
+            CacheSingleton *cache = [CacheSingleton shareInstance];
+            [cache.imageCache removeAllObjects];//清空缓存
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"清除缓存成功" delegate:nil cancelButtonTitle:@"Confirm" otherButtonTitles:nil, nil];
+            [alert show];
+        }
             NSLog(@"Clear success");
             break;
     }

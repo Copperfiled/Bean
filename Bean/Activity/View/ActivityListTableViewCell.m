@@ -146,15 +146,15 @@
         _wisherLabel.text = [@(activity.wisher_count) stringValue];
         _participantLabel.text = [@(activity.participant_count) stringValue];
         
-        //工具类
-        DownloadUtil *downloadUtil = [[DownloadUtil alloc]initWithURL:activity.image];
-        downloadUtil.downloadBlock = ^() {
-            //接收数据
-            _imageData = downloadUtil.urlData;
-            //显示
-            _movieImgView.image = [UIImage imageWithData:_imageData];
-        };
-        
+//        //工具类
+//        _movieImgView.image = [UIImage imageNamed:@"picholder"];
+//        DownloadUtil *downloadUtil = [[DownloadUtil alloc]initWithURL:activity.image];
+//        downloadUtil.downloadBlock = ^() {
+//            //接收数据
+//            _imageData = downloadUtil.urlData;
+//            //显示
+//            _movieImgView.image = [UIImage imageWithData:_imageData];
+//        };  
         [stringFormatter release];
         [formatter release];
     }

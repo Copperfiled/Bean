@@ -11,6 +11,9 @@
 #import "MovieListTableViewCell.h"
 #import "Movie.h"
 
+#import "CacheSingleton.h"  
+#import "DownloadUtil.h"
+
 @interface MovieListTableViewController ()
 
 @end
@@ -31,9 +34,27 @@
     changeItem.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = changeItem;
     
-    NSURL *url = [NSURL URLWithString:@"http://project.lanou3g.com/teacher/yihuiyun/lanouproject/movielist.php"];
-    NSURLRequest *request = [[NSURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    DownloadUtil *downloader = [[DownloadUtil alloc]initWithURL:@"http://project.lanou3g.com/teacher/yihuiyun/lanouproject/movielist.php"];
+    
+    downloader.downloadBlock = ^() {
+        _urlData = downloader.urlData;
+        
+        NSLog(@"接受完毕");
+        
+        NSError *error = nil;
+        NSMutableDictionary *mDic = [NSJSONSerialization JSONObjectWithData:_urlData options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:&error];
+        NSMutableArray *resultArray = [mDic valueForKey:@"result"];
+        
+        _movieArray = [[NSMutableArray alloc]initWithCapacity:resultArray.count];
+        
+        for (NSDictionary *tmpDic in resultArray) {
+            Movie *movie = [[Movie alloc]init];
+            [movie setValuesForKeysWithDictionary:tmpDic];
+            [_movieArray addObject:movie];
+            [movie release];
+        }
+        [self.tableView reloadData];
+    };
     
     //去掉分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -53,46 +74,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 160;
-}
-
-#pragma mark - NSURLConnectionDataDelegate - 
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"收到响应");
-    _urlData = [[NSMutableData alloc]init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    NSLog(@"正在接受数据");
-    [_urlData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSLog(@"接受完毕");
-    
-    NSError *error = nil;
-    NSMutableDictionary *mDic = [NSJSONSerialization JSONObjectWithData:_urlData options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:&error];
-    NSMutableArray *resultArray = [mDic valueForKey:@"result"];
-    
-    _movieArray = [[NSMutableArray alloc]initWithCapacity:resultArray.count];
-    
-    for (NSDictionary *tmpDic in resultArray) {
-        Movie *movie = [[Movie alloc]init];
-        [movie setValuesForKeysWithDictionary:tmpDic];
-        [_movieArray addObject:movie];
-        [movie release];
-    }
-    [self.tableView reloadData];
-}
-
-#pragma mark - NSURLConnectionDelegate -
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"error : %@", error);
 }
 
 #pragma mark - Table view data source
@@ -119,11 +100,47 @@
         cell = [[[MovieListTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]autorelease];
     }
     // Configure the cell...
-
-    cell.movieImgView.image = [UIImage imageNamed:@"picholder"];
-
-    cell.movie = _movieArray[indexPath.row];
+    
+    Movie *movie = _movieArray[indexPath.row];
+    cell.movie = movie;
+    
+    CacheSingleton *cacheSingle = [CacheSingleton shareInstance];
+    if (![cacheSingle.imageCache objectForKey:movie.pic_url]) {
+        //如果没有缓存
+        //延时下载
+        [self startDownload:movie.pic_url indexPath:indexPath];
+        cell.movieImgView.image = [UIImage imageNamed:@"picholder"];
+    }
+    else
+    {
+        NSLog(@"从缓存中读取%@", movie.pic_url);
+        cell.movieImgView.image = [cacheSingle.imageCache objectForKey:movie.pic_url];
+    }
+    
     return cell;
+}
+
+#pragma mark - table image support -
+
+- (void)startDownload:(NSString *)url indexPath:(NSIndexPath *)indexPath
+{
+    Movie *movie = _movieArray[indexPath.row];
+    
+    DownloadUtil *downloader = [[DownloadUtil alloc]initWithURL:url];
+    downloader.downloadBlock = ^(){
+        
+        MovieListTableViewCell *cell = (MovieListTableViewCell *) [self.tableView cellForRowAtIndexPath:indexPath];
+        cell.imageData = downloader.urlData;
+        //Display the newly loaded image
+        cell.movieImgView.image = [UIImage imageWithData:cell.imageData];
+        
+        if (cell.movieImgView.image) {
+            
+            NSLog(@"将%@放入缓存", cell.movieImgView.image);
+            CacheSingleton *cache = [CacheSingleton shareInstance];
+            [cache.imageCache setObject:cell.movieImgView.image forKey:movie.pic_url];
+        }
+    };
 }
 
 #pragma mark - Table view delegate

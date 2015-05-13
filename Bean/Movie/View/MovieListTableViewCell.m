@@ -48,36 +48,7 @@
         _movie = [movie retain];
         
         _movieNameLabel.text = movie.movieName;
-        //异步下载
-        NSURL *url = [NSURL URLWithString:movie.pic_url];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-//        [NSURLConnection sendAsynchronousRequest:request
-//                                           queue:[[NSOperationQueue alloc]init]
-//                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-//                                   _movieImgView.image = [UIImage imageWithData:data];
-//                               }];
-        [NSURLConnection connectionWithRequest:request delegate:self];
     }
 }
-
-#pragma mark - NSURLConnectionDataDelegate -
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"受到响应");
-    
-    _imageData = [[NSMutableData alloc]init];
-}
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    NSLog(@"正在加载图片");
-    [_imageData appendData:data];
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSLog(@"加载完毕");
-    _movieImgView.image = [UIImage imageWithData:_imageData];
-}
-
 
 @end
