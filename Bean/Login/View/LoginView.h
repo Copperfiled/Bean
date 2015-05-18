@@ -12,11 +12,11 @@
 
 @interface LoginView : UIView
 
-@property (assign, nonatomic) id target;
-@property (assign, nonatomic) SEL action;
+@property (nonatomic,assign) id target;
+@property (nonatomic, assign) SEL action;
 
-@property (retain, nonatomic) UIButton *loginButton;
-@property (retain, nonatomic) UIButton *registButton;
-@property (retain, nonatomic) UIButton *cancelButton;
+@property (nonatomic, retain) UIButton *loginButton;
+@property (nonatomic, retain) UIButton *registButton;
+@property (nonatomic, retain) UIButton *cancelButton;
 
 @end

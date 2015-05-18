@@ -11,10 +11,10 @@
 @interface RegistView : UIView
 
 //target/action
-@property (assign, nonatomic) id target;
-@property (assign, nonatomic) SEL action;
+@property (nonatomic, assign) id target;
+@property (nonatomic, assign) SEL action;
 
-@property (retain, nonatomic) UIButton *cancelButton;
-@property (retain, nonatomic) UIButton *confirmButton;
+@property (nonatomic, retain) UIButton *cancelButton;
+@property (nonatomic, retain) UIButton *confirmButton;
 
 @end

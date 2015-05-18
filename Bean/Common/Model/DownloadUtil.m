@@ -7,6 +7,9 @@
 //
 
 #import "DownloadUtil.h"
+#import "CacheSingleton.h"
+
+#import <UIKit/UIKit.h>
 
 @implementation DownloadUtil
 
@@ -46,8 +49,17 @@
     //唯一的不同是在这里：解析数据的过程因对象而异。也即是说仍要执行一系列的解析
     //具体执行何种操作，对象执行的时候才知道
     NSLog(@"下载完成");
+    UIImage *image = [UIImage imageWithData:_urlData];
+    
     if (!!_downloadBlock) {
         _downloadBlock();
+        if (!!image) {
+            //存入缓存
+            NSLog(@"将%@存入缓存", image);
+            CacheSingleton *cache = [CacheSingleton shareInstance];
+            [cache.imageCache setObject:image forKey:_url];
+        }
+
     }
 }
 

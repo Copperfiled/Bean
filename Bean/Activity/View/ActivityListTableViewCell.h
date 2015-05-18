@@ -27,7 +27,7 @@
 @property (nonatomic, readonly, retain) UILabel *endDateLabel;
 
 @property (nonatomic, retain) Activity *activity;
-@property (nonatomic, retain) NSMutableData *imageData;
+//@property (nonatomic, retain) NSMutableData *imageData
 
 #pragma mark - init methods-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;

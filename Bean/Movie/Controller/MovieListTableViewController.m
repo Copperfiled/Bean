@@ -9,6 +9,8 @@
 #import "MovieListTableViewController.h"
 #import "MovieDetailViewController.h"
 #import "MovieListTableViewCell.h"
+#import "MovieListCollectionViewController.h"
+
 #import "Movie.h"
 
 #import "CacheSingleton.h"  
@@ -23,6 +25,34 @@
 #pragma mark-----------------select method--------------------------
 - (void)changeLayout
 {
+    /**
+     *  模态出一个瀑布流视图
+     *
+     */
+    CGRect rect = [UIScreen mainScreen].bounds;
+    
+    //用系统自带的layout
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+    flowLayout.itemSize = CGSizeMake(rect.size.width / 3, 160);
+    flowLayout.minimumInteritemSpacing = 0;
+    flowLayout.minimumLineSpacing = 20;
+    
+    MovieListCollectionViewController *movieCollectionVC = [[MovieListCollectionViewController alloc]initWithCollectionViewLayout:flowLayout];
+    
+    //传数据模型
+    movieCollectionVC.movieArray = [NSMutableArray arrayWithArray:_movieArray];
+    
+    UINavigationController *collectionNaVC = [[UINavigationController alloc]initWithRootViewController:movieCollectionVC];
+//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    collectionNaVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:view];
+    
+    [collectionNaVC.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
+    
+//    //模态
+//    [self presentViewController:collectionNaVC animated:YES completion:^{
+//        //do something
+//    }];
+    [self.navigationController pushViewController:movieCollectionVC animated:YES];
     NSLog(@"change layout!");
 }
 

@@ -40,6 +40,7 @@
      * 3. 下载完成之后，解析数据
      */
     //创建对象（初始化请求，连接）
+    
     DownloadUtil *downloadUtil = [[DownloadUtil alloc]initWithURL:urlStr];
 
     //连接完成后的操作
@@ -121,23 +122,14 @@
 #pragma mark - Table cell image support
 
 - (void) startImageDownload:(NSString *)url forIndexPath:(NSIndexPath *)indexpath
-{
-    Activity *activity = _activityMArray[indexpath.row];
-    
+{    
     DownloadUtil *downloader = [[DownloadUtil alloc]initWithURL:url];
     downloader.downloadBlock = ^(){
         ActivityListTableViewCell *cell = (ActivityListTableViewCell *)[self.tableView cellForRowAtIndexPath:indexpath];
         
         //Displsy the newly loader image
-        cell.imageData = downloader.urlData;
-        cell.movieImgView.image = [UIImage imageWithData:cell.imageData];
+        cell.movieImgView.image = [UIImage imageWithData:downloader.urlData];
         
-        if (!!cell.movieImgView.image) {
-            //存入缓存
-            NSLog(@"将%@存入缓存", cell.movieImgView.image);
-            CacheSingleton *cache = [CacheSingleton shareInstance];
-            [cache.imageCache setObject:cell.movieImgView.image forKey:activity.image];
-        }
     };
 }
 

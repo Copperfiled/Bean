@@ -10,6 +10,6 @@
 
 @interface UserTableViewController : UITableViewController
 
-@property (retain, nonatomic) NSMutableArray *dataSource;
+@property (nonatomic, retain) NSMutableArray *dataSource;
 
 @end

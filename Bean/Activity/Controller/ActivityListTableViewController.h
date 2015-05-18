@@ -11,7 +11,7 @@
 
 @interface ActivityListTableViewController : UITableViewController<NSURLConnectionDataDelegate, NSURLConnectionDelegate>
 
-@property (retain, nonatomic) NSMutableArray *activityMArray;
-@property (retain, nonatomic) NSMutableData *urlData;
+@property (nonatomic, retain) NSMutableArray *activityMArray;
+@property (nonatomic, retain) NSMutableData *urlData;
 
 @end
