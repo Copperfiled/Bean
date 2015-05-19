@@ -14,6 +14,10 @@
 #import "UserSingelton.h"
 #import "Activity.h"
 
+#import "userHundle.h"
+#import "DBUtil.h"
+#import "User.h"
+
 @interface ActivityDetailViewController ()
 
 @end
@@ -37,9 +41,22 @@
         [loginNav release];
         [loginVC release];
     }
-    else
+    else if (![Activity activityExistWithID:[_activity.ID intValue]])
     {
+        //不存在
         NSLog(@"Collect success!");
+        //将此Activity添加到活动收藏表activities中
+        
+        [Activity addActivity:_activity withUser:userSingle.currentUser];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"collect successfull" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
+    } else
+    {
+        //已经存在
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"Cannot be collected twice!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        [alert release];
     }
 }
 - (void)loadView

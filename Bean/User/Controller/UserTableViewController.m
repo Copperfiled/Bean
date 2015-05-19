@@ -13,6 +13,8 @@
 
 #import "UserSingelton.h"
 #import "CacheSingleton.h"
+#import "Activity.h"
+#import "Movie.h"
 
 @interface UserTableViewController ()
 
@@ -148,6 +150,10 @@
 - (void)enterActivityViewController
 {
     MyActivityTableViewController *myActivity = [[MyActivityTableViewController alloc]init];
+    UserSingelton *userSingleton = [UserSingelton shareInstance];
+    
+    myActivity.activityArray = [[NSMutableArray alloc]initWithArray:[Activity allActivitiesByUser:userSingleton.currentUser]];
+
     [self.navigationController pushViewController:myActivity animated:YES];
     [myActivity release];
 }
@@ -155,6 +161,9 @@
 - (void)enterMovieDetailViewController
 {
     MyMovieTableViewController *myMovieVC = [[MyMovieTableViewController alloc]init];
+    UserSingelton *userSingleton = [UserSingelton shareInstance];
+    myMovieVC.movieArray = [[NSMutableArray alloc]initWithArray:[Movie allMoviesWithUser:userSingleton.currentUser]];
+
     [self.navigationController pushViewController:myMovieVC animated:YES];
     [myMovieVC release];
 }

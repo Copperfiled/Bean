@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class User;
+
 @interface UserSingelton : NSObject
 
 @property (nonatomic, assign) BOOL isLogin;
+@property (nonatomic, retain) User *currentUser;
 
 + (UserSingelton *) shareInstance;
 

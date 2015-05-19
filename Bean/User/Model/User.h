@@ -15,4 +15,12 @@
 @property (nonatomic, retain) NSString *phone;
 @property (nonatomic, retain) NSString *email;
 
+/**
+ *  init method
+ *
+ *  @since 1.0
+ */
+- (instancetype)initWithName:(NSString *)name password:(NSString *)password phone:(NSString *)phone email:(NSString *)email;
++ (instancetype)userWithName:(NSString *)name password:(NSString *)password phone:(NSString *)phone email:(NSString *)email;
+
 @end

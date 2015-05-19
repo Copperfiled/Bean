@@ -43,16 +43,25 @@
     movieCollectionVC.movieArray = [NSMutableArray arrayWithArray:_movieArray];
     
     UINavigationController *collectionNaVC = [[UINavigationController alloc]initWithRootViewController:movieCollectionVC];
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-//    collectionNaVC.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:view];
-    
     [collectionNaVC.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
     
 //    //模态
 //    [self presentViewController:collectionNaVC animated:YES completion:^{
 //        //do something
 //    }];
-    [self.navigationController pushViewController:movieCollectionVC animated:YES];
+//    [self.navigationController pushViewController:movieCollectionVC animated:YES];
+    [UITableView transitionFromView:self.tableView
+                             toView:movieCollectionVC.view
+                           duration:2.0
+                            options:UIViewAnimationOptionTransitionFlipFromLeft
+                         completion:^(BOOL finished) {
+        [self removeFromParentViewController];
+        [self.navigationController addChildViewController:movieCollectionVC];
+//        [self.navigationController.view addSubview:movieCollectionVC.view];
+    }];
+    [flowLayout release];
+    [movieCollectionVC release];
+    [collectionNaVC release];
     NSLog(@"change layout!");
 }
 

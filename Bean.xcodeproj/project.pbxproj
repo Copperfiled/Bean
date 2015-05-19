@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C226A9E11B09FFBD00FF8EE7 /* DownloadUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C226A9E01B09FFBD00FF8EE7 /* DownloadUtil.m */; };
+		C226A9E41B0A00AD00FF8EE7 /* DBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C226A9E31B0A00AD00FF8EE7 /* DBUtil.m */; };
+		C226A9E61B0A010800FF8EE7 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C226A9E51B0A010800FF8EE7 /* libsqlite3.0.dylib */; };
+		C226A9EF1B0A088000FF8EE7 /* userHundle.m in Sources */ = {isa = PBXBuildFile; fileRef = C226A9EE1B0A088000FF8EE7 /* userHundle.m */; };
+		C226A9F11B0A213300FF8EE7 /* beanDB.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C226A9F01B0A213300FF8EE7 /* beanDB.sqlite */; };
 		C23E9D7B1B032CD000358592 /* CacheSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = C23E9D7A1B032CD000358592 /* CacheSingleton.m */; };
 		C25EB8DA1AF8A4F900B47AD5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB8D91AF8A4F900B47AD5 /* main.m */; };
 		C25EB8DD1AF8A4F900B47AD5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C25EB8DC1AF8A4F900B47AD5 /* AppDelegate.m */; };
@@ -60,6 +64,12 @@
 /* Begin PBXFileReference section */
 		C226A9DF1B09FFBD00FF8EE7 /* DownloadUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadUtil.h; sourceTree = "<group>"; };
 		C226A9E01B09FFBD00FF8EE7 /* DownloadUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadUtil.m; sourceTree = "<group>"; };
+		C226A9E21B0A00AD00FF8EE7 /* DBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUtil.h; sourceTree = "<group>"; };
+		C226A9E31B0A00AD00FF8EE7 /* DBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUtil.m; sourceTree = "<group>"; };
+		C226A9E51B0A010800FF8EE7 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		C226A9ED1B0A088000FF8EE7 /* userHundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userHundle.h; sourceTree = "<group>"; };
+		C226A9EE1B0A088000FF8EE7 /* userHundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userHundle.m; sourceTree = "<group>"; };
+		C226A9F01B0A213300FF8EE7 /* beanDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = beanDB.sqlite; sourceTree = "<group>"; };
 		C23E9D791B032CD000358592 /* CacheSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheSingleton.h; sourceTree = "<group>"; };
 		C23E9D7A1B032CD000358592 /* CacheSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheSingleton.m; sourceTree = "<group>"; };
 		C25EB8D41AF8A4F900B47AD5 /* Bean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bean.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C226A9E61B0A010800FF8EE7 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,9 +165,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C226A9EC1B0A085C00FF8EE7 /* Hundle */ = {
+			isa = PBXGroup;
+			children = (
+				C226A9ED1B0A088000FF8EE7 /* userHundle.h */,
+				C226A9EE1B0A088000FF8EE7 /* userHundle.m */,
+			);
+			path = Hundle;
+			sourceTree = "<group>";
+		};
 		C25EB8CB1AF8A4F900B47AD5 = {
 			isa = PBXGroup;
 			children = (
+				C226A9E51B0A010800FF8EE7 /* libsqlite3.0.dylib */,
 				C2CC2DE61AF9A802005FE9B4 /* Common */,
 				C25EB8F71AF8A60000B47AD5 /* Activity */,
 				C25EB8F81AF8A60000B47AD5 /* Cinema */,
@@ -263,6 +284,7 @@
 		C25EB8FB1AF8A60000B47AD5 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				C226A9EC1B0A085C00FF8EE7 /* Hundle */,
 				C2A3B3A81B0064C700181CEE /* Controller */,
 				C2A3B3AF1B0064C700181CEE /* Model */,
 				C2A3B3B01B0064C700181CEE /* View */,
@@ -363,10 +385,13 @@
 		C2A3B3941B00648200181CEE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C226A9F01B0A213300FF8EE7 /* beanDB.sqlite */,
 				C226A9DF1B09FFBD00FF8EE7 /* DownloadUtil.h */,
 				C226A9E01B09FFBD00FF8EE7 /* DownloadUtil.m */,
 				C23E9D791B032CD000358592 /* CacheSingleton.h */,
 				C23E9D7A1B032CD000358592 /* CacheSingleton.m */,
+				C226A9E21B0A00AD00FF8EE7 /* DBUtil.h */,
+				C226A9E31B0A00AD00FF8EE7 /* DBUtil.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -563,6 +588,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C25EB8E21AF8A4F900B47AD5 /* LaunchScreen.xib in Resources */,
+				C226A9F11B0A213300FF8EE7 /* beanDB.sqlite in Resources */,
 				C25EB8DF1AF8A4F900B47AD5 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -591,7 +617,9 @@
 				C2A3B3A71B00648200181CEE /* UITextField+Additional.m in Sources */,
 				C2D44EE71B003E2F003B12E6 /* ActivityDetailView.m in Sources */,
 				C226A9E11B09FFBD00FF8EE7 /* DownloadUtil.m in Sources */,
+				C226A9EF1B0A088000FF8EE7 /* userHundle.m in Sources */,
 				C2A3B3BA1B0065B600181CEE /* UserSingelton.m in Sources */,
+				C226A9E41B0A00AD00FF8EE7 /* DBUtil.m in Sources */,
 				C2A3B38D1B00640800181CEE /* MovieDetailViewController.m in Sources */,
 				C2A3B3921B00640800181CEE /* MovieListTableViewCell.m in Sources */,
 				C2A3B37A1B0060DE00181CEE /* RegistView.m in Sources */,

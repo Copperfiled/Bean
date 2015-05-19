@@ -10,4 +10,6 @@
 
 @interface MyActivityTableViewController : UITableViewController
 
+@property (nonatomic, retain) NSMutableArray *activityArray;
+
 @end

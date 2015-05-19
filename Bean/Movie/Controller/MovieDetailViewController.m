@@ -29,6 +29,7 @@
 }
 - (void)collect
 {
+    UIAlertView *alter = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"collect successfull!" delegate:nil cancelButtonTitle:@"Confirm" otherButtonTitles:nil, nil];
     UserSingelton *singleton = [UserSingelton shareInstance];
     if (!singleton.isLogin) {
         //if it has not login, present the login view
@@ -39,9 +40,18 @@
         [loginNav release];
         [loginVC release];
     }
+    else if (![Movie movieExistWithID:[_movie.movieId intValue]])
+    {
+        [Movie addMovie:_movie ByUser:singleton.currentUser];
+        alter.message = @"Collect successfull!";
+        [alter show];
+        [alter release];
+    }
     else
     {
-        NSLog(@"movie detail");
+        alter.message = @"Cannot be collect twice";
+        [alter show];
+        [alter release];
     }
 }
 

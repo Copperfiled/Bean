@@ -13,6 +13,8 @@
 #import "UserSingelton.h"
 #import "LTView.h"
 
+#import "User.h"
+
 #define NAMEFIELD_TAG 1111
 #define PASSWORDFIELD_TAG 1112
 
@@ -72,6 +74,10 @@
     {
         //login succeed
         singleton.isLogin = YES;
+        
+        User *currentUser = [User userWithName:userArray[0] password:userArray[1] phone:userArray[3] email:userArray[4]];
+        singleton.currentUser = currentUser;//记录当前登录用户
+        
         [self dismissViewControllerAnimated:YES completion:nil];
         if (_successBlock) {
             _successBlock();//block

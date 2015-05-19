@@ -102,6 +102,8 @@
         [users setObject:userArray forKey:userName];
         [users synchronize];
         NSLog(@"regist success");
+        //返回登录界面
+        [self backToLoginView];
     }
 }
 - (void)backToLoginView

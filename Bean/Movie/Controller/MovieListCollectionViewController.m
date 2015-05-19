@@ -56,10 +56,10 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)backToList
 {
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        //do something
-//    }];
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        //do something
+    }];
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*
