@@ -48,13 +48,12 @@
         //将此Activity添加到活动收藏表activities中
         
         [Activity addActivity:_activity withUser:userSingle.currentUser];
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"collect successfull" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"collect successfull" delegate:nil cancelButtonTitle:@"Confirm" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
-    } else
-    {
+    } else {
         //已经存在
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"Cannot be collected twice!" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Reminder" message:@"Cannot be collected twice!" delegate:nil cancelButtonTitle:@"Confirm" otherButtonTitles:nil, nil];
         [alert show];
         [alert release];
     }

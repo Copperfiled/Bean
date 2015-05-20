@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+ *  异步下载工具类
+ *
+ *  @since 1.0
+ */
 typedef void (^downloadDidFinishBlock)();
 
 @interface DownloadUtil : NSObject<NSURLConnectionDataDelegate,NSURLConnectionDelegate>

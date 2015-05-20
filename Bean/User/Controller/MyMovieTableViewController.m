@@ -7,6 +7,7 @@
 //
 
 #import "MyMovieTableViewController.h"
+#import "MovieDetailViewController.h"
 
 #import "Movie.h"
 
@@ -29,6 +30,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Table View delegate 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MovieDetailViewController *detailVC = [[MovieDetailViewController alloc]init];
+    [self.navigationController pushViewController:detailVC animated:YES];
+    //把movie传给detailVC
+    detailVC.movie = _movieArray[indexPath.row];
+    
+    [detailVC release];
 }
 
 #pragma mark - Table view data source
@@ -80,7 +93,6 @@
     }
     [tableView endUpdates];
 }
-
 
 /*
 // Override to support rearranging the table view.

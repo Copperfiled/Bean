@@ -8,16 +8,17 @@
 
 #import "UserSingelton.h"
 
+static UserSingelton *singal = nil;
+
 @implementation UserSingelton
 
 + (UserSingelton *)shareInstance
 {
-    static UserSingelton *singal = nil;
-    @synchronized(self){
-        if (nil == singal) {
-            singal = [[UserSingelton alloc]init];
-        }
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        singal = [[self alloc]init];
+    });
     return singal;
 }
+
 @end

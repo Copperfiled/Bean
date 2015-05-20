@@ -29,6 +29,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - Table View delegate -
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 
 #pragma mark - Table view data source
 
@@ -53,11 +59,10 @@
     if (nil == cell) {
         cell = [[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]autorelease];
     }
-    cell.textLabel.text = ((Activity *)(_activityArray[indexPath.row])).title;
+    Activity *activity = _activityArray[indexPath.row];
+    cell.textLabel.text = activity.title;
     return cell;
 }
-
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

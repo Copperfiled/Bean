@@ -50,15 +50,16 @@
 //        //do something
 //    }];
 //    [self.navigationController pushViewController:movieCollectionVC animated:YES];
-    [UITableView transitionFromView:self.tableView
-                             toView:movieCollectionVC.view
-                           duration:2.0
+
+    [UIView transitionFromView:self.tableView
+                             toView:collectionNaVC.view
+                           duration:1.0
                             options:UIViewAnimationOptionTransitionFlipFromLeft
                          completion:^(BOOL finished) {
-        [self removeFromParentViewController];
-        [self.navigationController addChildViewController:movieCollectionVC];
-//        [self.navigationController.view addSubview:movieCollectionVC.view];
-    }];
+                             [self.navigationController.view addSubview:collectionNaVC.view];
+//                             [self removeFromParentViewController];
+                             [self.navigationController addChildViewController:collectionNaVC];
+                         }];
     [flowLayout release];
     [movieCollectionVC release];
     [collectionNaVC release];
@@ -72,7 +73,7 @@
     UIBarButtonItem *changeItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"btn_nav_collection"] style:UIBarButtonItemStylePlain target:self action:@selector(changeLayout)];
     changeItem.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = changeItem;
-    
+    //下载
     DownloadUtil *downloader = [[DownloadUtil alloc]initWithURL:@"http://project.lanou3g.com/teacher/yihuiyun/lanouproject/movielist.php"];
     
     downloader.downloadBlock = ^() {
@@ -128,7 +129,6 @@
     // Return the number of rows in the section.
     return _movieArray.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"movie";

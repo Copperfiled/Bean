@@ -152,8 +152,9 @@
     MyActivityTableViewController *myActivity = [[MyActivityTableViewController alloc]init];
     UserSingelton *userSingleton = [UserSingelton shareInstance];
     
+    //这里传的avtivity中只有title，ID
     myActivity.activityArray = [[NSMutableArray alloc]initWithArray:[Activity allActivitiesByUser:userSingleton.currentUser]];
-
+    
     [self.navigationController pushViewController:myActivity animated:YES];
     [myActivity release];
 }

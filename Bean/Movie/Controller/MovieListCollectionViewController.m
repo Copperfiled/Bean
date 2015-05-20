@@ -10,6 +10,7 @@
 #import "MovieDetailViewController.h"
 
 #import "MovieListCollectionViewCell.h"
+#import "MovieListTableViewController.h"
 
 #import "CacheSingleton.h"  
 #import "Movie.h"
@@ -56,10 +57,22 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)backToList
 {
-    [self dismissViewControllerAnimated:YES completion:^{
-        //do something
-    }];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        //do something
+//    }];
 //    [self.navigationController popViewControllerAnimated:YES];
+    MovieListTableViewController *movieListVC = [[MovieListTableViewController alloc]init];
+    movieListVC.movieArray = _movieArray;
+    UINavigationController *naVC = [[UINavigationController alloc]initWithRootViewController:movieListVC];
+    [naVC.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_nav"] forBarMetrics:UIBarMetricsDefault];
+    [UIView transitionFromView:self.collectionView
+                        toView:naVC.view
+                      duration:1.0
+                       options:UIViewAnimationOptionTransitionFlipFromRight
+                    completion:^(BOOL finished) {
+                        [self.navigationController.view addSubview:naVC.view];
+                        [self.navigationController addChildViewController:naVC];
+                    }];
 }
 
 /*

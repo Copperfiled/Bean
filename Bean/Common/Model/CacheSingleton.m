@@ -14,13 +14,6 @@ static CacheSingleton *cache = nil;
 
 + (instancetype)shareInstance
 {
-//    @synchronized(self) {
-//        if (nil == cache) {
-//            cache = [[CacheSingleton alloc]init];
-//            //初始化imageCache
-//            cache.imageCache = [[[NSCache alloc]init]autorelease];
-//        }
-//    }
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         cache = [[self alloc]init];

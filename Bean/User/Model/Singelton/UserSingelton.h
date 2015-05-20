@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class User;
-
+/**
+ *  用户单例类：保证只登陆一次，并且记录当前登录用户
+ *
+ *  @since <#version number#>
+ */
 @interface UserSingelton : NSObject
 
 @property (nonatomic, assign) BOOL isLogin;

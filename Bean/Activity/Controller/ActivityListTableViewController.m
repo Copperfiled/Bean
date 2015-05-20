@@ -100,8 +100,8 @@
     // Configure the cell...
     
     cell.activity = _activityMArray[indexPath.row];//先不下载图片
-    
     CacheSingleton *cacheSingleton = [CacheSingleton shareInstance];
+    
     if (![cacheSingleton.imageCache objectForKey:cell.activity.image]) {
         //缓存中不存在，则重新下载,并将其存入缓存中
         if (!self.tableView.dragging && !self.tableView.decelerating) {

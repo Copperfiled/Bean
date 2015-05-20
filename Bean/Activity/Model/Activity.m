@@ -76,6 +76,7 @@
             const unsigned char *cTitle = sqlite3_column_text(stmt, 1);
             
             Activity *activity = [[Activity alloc]init];
+            //这是通过数据库查找得到的Activity，只有ID和title
             activity.title = [NSString stringWithUTF8String:(const char *)cTitle];
             activity.ID = [@(ID) stringValue];
             [array addObject:activity];
@@ -119,12 +120,16 @@
     sqlite3 *db = [DBUtil open];
     NSString *sql = @"select * from activities where ID = ?";
     sqlite3_stmt *stmt = nil;
-    if (SQLITE_OK == sqlite3_prepare(db, [sql UTF8String], -1, &stmt, NULL)) {
+    if (SQLITE_OK == sqlite3_prepare_v2(db, [sql UTF8String], -1, &stmt, NULL)) {
         sqlite3_bind_int(stmt, 1, ID);
-        sqlite3_step(stmt);
-        sqlite3_finalize(stmt);
-        [DBUtil close];
-        return YES;        
+        int result = sqlite3_step(stmt);
+        NSLog(@"%d", result);
+        if(SQLITE_ROW == result)
+        {
+            sqlite3_finalize(stmt);
+            [DBUtil close];
+            return YES;
+        }
     }
     else
     {

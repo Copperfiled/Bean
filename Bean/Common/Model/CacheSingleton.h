@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  缓存单例类
+ *
+ *  @since 1.0
+ */
 @interface CacheSingleton : NSObject
 
 @property (retain, nonatomic) NSCache *imageCache;
